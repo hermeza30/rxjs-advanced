@@ -19,7 +19,7 @@ export class DistinctUntilChangeComponent implements OnInit {
     of(1,2,3,4,5,6,7,8,9).pipe(distinctUntilChanged((prev,curr)=>{
       //Cuando el valor es true no deja pasar
       //Cada vez que el valor pasa prev toma el valor del current
-      //prev=1 y current =2 entonces 2===1+1 es true entonces no deja pasar
+      //prev=1 y current =2 entonces 2===1+1 es true entonces no deja pasar, es decir hace el skip del 2
       //y prev queda en 1 y current en 3
       console.log('Prev',prev);
       console.log('Curr', curr);
