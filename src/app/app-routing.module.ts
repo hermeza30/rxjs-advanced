@@ -10,6 +10,11 @@ import { TakeOperatorComponent } from './pages/take-operator/take-operator.compo
 import { TakeLastComponent } from './pages/take-last/take-last.component';
 import { TakeUntilComponent } from './pages/take-until/take-until.component';
 import { TakeHileComponent } from './pages/take-hile/take-hile.component';
+import { SkipComponent } from './pages/skip/skip.component';
+import { SkipLastComponent } from './pages/skip-last/skip-last.component';
+import { SkipUntilComponent } from './pages/skip-until/skip-until.component';
+import { SkipWhileComponent } from './pages/skip-while/skip-while.component';
+import { DistinctComponent } from './pages/distinct/distinct.component';
 
 const routes: Routes = [
   {
@@ -25,7 +30,10 @@ const routes: Routes = [
       { path: 'takelast', component: TakeLastComponent },
       { path: 'takeuntil', component: TakeUntilComponent },
       { path: 'takewhile', component: TakeHileComponent },
-
+      { path: 'skip', component: SkipComponent },
+      { path: 'skiplast', component: SkipLastComponent },
+      { path: 'skipuntil', component: SkipUntilComponent },
+      { path: 'distinct', component: DistinctComponent },
 
 
     ],
