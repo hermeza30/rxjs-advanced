@@ -19,6 +19,10 @@ import { DistinctUntilChangeComponent } from './pages/distinct-until-change/dist
 import { DistinctUntilKeyChangeComponent } from './pages/distinct-until-key-change/distinct-until-key-change.component';
 import { FilterComponent } from './pages/filter/filter.component';
 import { SampleComponent } from './pages/sample/sample.component';
+import { AuditComponent } from './pages/audit/audit.component';
+import { ThrottleComponent } from './pages/throttle/throttle.component';
+import { FirstComponent } from './pages/first/first.component';
+import { LastComponent } from './pages/last/last.component';
 
 const routes: Routes = [
   {
@@ -43,6 +47,10 @@ const routes: Routes = [
       { path: 'distinctuntilkeychange', component: DistinctUntilKeyChangeComponent },
       { path: 'filter', component: FilterComponent },
       { path: 'sample', component: SampleComponent },
+      { path: 'audit', component: AuditComponent },
+      { path: 'throttle', component: ThrottleComponent },
+      { path: 'first', component: FirstComponent },
+      { path: 'last', component: LastComponent },
 
 
     ],

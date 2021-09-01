@@ -26,6 +26,10 @@ import { DistinctUntilChangeComponent } from './pages/distinct-until-change/dist
 import { DistinctUntilKeyChangeComponent } from './pages/distinct-until-key-change/distinct-until-key-change.component';
 import { FilterComponent } from './pages/filter/filter.component';
 import { SampleComponent } from './pages/sample/sample.component';
+import { AuditComponent } from './pages/audit/audit.component';
+import { ThrottleComponent } from './pages/throttle/throttle.component';
+import { FirstComponent } from './pages/first/first.component';
+import { LastComponent } from './pages/last/last.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { SampleComponent } from './pages/sample/sample.component';
     DistinctUntilKeyChangeComponent,
     FilterComponent,
     SampleComponent,
+    AuditComponent,
+    ThrottleComponent,
+    FirstComponent,
+    LastComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
