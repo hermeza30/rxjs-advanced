@@ -23,6 +23,7 @@ import { AuditComponent } from './pages/audit/audit.component';
 import { ThrottleComponent } from './pages/throttle/throttle.component';
 import { FirstComponent } from './pages/first/first.component';
 import { LastComponent } from './pages/last/last.component';
+import { DebounceComponent } from './pages/debounce/debounce.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'throttle', component: ThrottleComponent },
       { path: 'first', component: FirstComponent },
       { path: 'last', component: LastComponent },
+      { path: 'debounce', component: DebounceComponent },
 
 
     ],
