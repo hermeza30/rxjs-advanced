@@ -24,6 +24,8 @@ import { SkipWhileComponent } from './pages/skip-while/skip-while.component';
 import { DistinctComponent } from './pages/distinct/distinct.component';
 import { DistinctUntilChangeComponent } from './pages/distinct-until-change/distinct-until-change.component';
 import { DistinctUntilKeyChangeComponent } from './pages/distinct-until-key-change/distinct-until-key-change.component';
+import { FilterComponent } from './pages/filter/filter.component';
+import { SampleComponent } from './pages/sample/sample.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { DistinctUntilKeyChangeComponent } from './pages/distinct-until-key-chan
     DistinctComponent,
     DistinctUntilChangeComponent,
     DistinctUntilKeyChangeComponent,
+    FilterComponent,
+    SampleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
