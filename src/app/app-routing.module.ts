@@ -16,6 +16,7 @@ import { SkipUntilComponent } from './pages/skip-until/skip-until.component';
 import { SkipWhileComponent } from './pages/skip-while/skip-while.component';
 import { DistinctComponent } from './pages/distinct/distinct.component';
 import { DistinctUntilChangeComponent } from './pages/distinct-until-change/distinct-until-change.component';
+import { DistinctUntilKeyChangeComponent } from './pages/distinct-until-key-change/distinct-until-key-change.component';
 
 const routes: Routes = [
   {
@@ -34,8 +35,10 @@ const routes: Routes = [
       { path: 'skip', component: SkipComponent },
       { path: 'skiplast', component: SkipLastComponent },
       { path: 'skipuntil', component: SkipUntilComponent },
+      { path: 'skipwhile', component: SkipWhileComponent },
       { path: 'distinct', component: DistinctComponent },
       { path: 'distinctuntilchange', component: DistinctUntilChangeComponent },
+      { path: 'distinctuntilkeychange', component: DistinctUntilKeyChangeComponent },
 
 
     ],
