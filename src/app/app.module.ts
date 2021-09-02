@@ -31,6 +31,9 @@ import { ThrottleComponent } from './pages/throttle/throttle.component';
 import { FirstComponent } from './pages/first/first.component';
 import { LastComponent } from './pages/last/last.component';
 import { DebounceComponent } from './pages/debounce/debounce.component';
+import { ElementatComponent } from './pages/elementat/elementat.component';
+import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements.component';
+import { SingleComponent } from './pages/single/single.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { DebounceComponent } from './pages/debounce/debounce.component';
     FirstComponent,
     LastComponent,
     DebounceComponent,
+    ElementatComponent,
+    IgnoreElementsComponent,
+    SingleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

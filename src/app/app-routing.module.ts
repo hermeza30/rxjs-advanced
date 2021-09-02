@@ -24,6 +24,9 @@ import { ThrottleComponent } from './pages/throttle/throttle.component';
 import { FirstComponent } from './pages/first/first.component';
 import { LastComponent } from './pages/last/last.component';
 import { DebounceComponent } from './pages/debounce/debounce.component';
+import { ElementatComponent } from './pages/elementat/elementat.component';
+import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements.component';
+import { SingleComponent } from './pages/single/single.component';
 
 const routes: Routes = [
   {
@@ -53,6 +56,9 @@ const routes: Routes = [
       { path: 'first', component: FirstComponent },
       { path: 'last', component: LastComponent },
       { path: 'debounce', component: DebounceComponent },
+      { path: 'elementat', component: ElementatComponent },
+      { path: 'ignoreelements', component: IgnoreElementsComponent },
+      { path: 'single', component: SingleComponent },
 
 
     ],
