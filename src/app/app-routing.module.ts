@@ -29,6 +29,7 @@ import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements
 import { SingleComponent } from './pages/single/single.component';
 import { MapComponent } from './pages/map/map.component';
 import { MapToComponent } from './pages/map-to/map-to.component';
+import { AjaxComponent } from './pages/ajax/ajax.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
       { path: 'single', component: SingleComponent },
       { path: 'map', component: MapComponent },
       { path: 'mapto', component: MapToComponent },
+      { path: 'ajax', component: AjaxComponent },
 
 
     ],

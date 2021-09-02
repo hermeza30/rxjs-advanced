@@ -36,6 +36,7 @@ import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements
 import { SingleComponent } from './pages/single/single.component';
 import { MapComponent } from './pages/map/map.component';
 import { MapToComponent } from './pages/map-to/map-to.component';
+import { AjaxComponent } from './pages/ajax/ajax.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MapToComponent } from './pages/map-to/map-to.component';
     SingleComponent,
     MapComponent,
     MapToComponent,
+    AjaxComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
