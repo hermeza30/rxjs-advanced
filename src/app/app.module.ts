@@ -34,6 +34,8 @@ import { DebounceComponent } from './pages/debounce/debounce.component';
 import { ElementatComponent } from './pages/elementat/elementat.component';
 import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements.component';
 import { SingleComponent } from './pages/single/single.component';
+import { MapComponent } from './pages/map/map.component';
+import { MapToComponent } from './pages/map-to/map-to.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { SingleComponent } from './pages/single/single.component';
     ElementatComponent,
     IgnoreElementsComponent,
     SingleComponent,
+    MapComponent,
+    MapToComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

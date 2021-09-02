@@ -27,6 +27,8 @@ import { DebounceComponent } from './pages/debounce/debounce.component';
 import { ElementatComponent } from './pages/elementat/elementat.component';
 import { IgnoreElementsComponent } from './pages/ignore-elements/ignore-elements.component';
 import { SingleComponent } from './pages/single/single.component';
+import { MapComponent } from './pages/map/map.component';
+import { MapToComponent } from './pages/map-to/map-to.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,8 @@ const routes: Routes = [
       { path: 'elementat', component: ElementatComponent },
       { path: 'ignoreelements', component: IgnoreElementsComponent },
       { path: 'single', component: SingleComponent },
+      { path: 'map', component: MapComponent },
+      { path: 'mapto', component: MapToComponent },
 
 
     ],
