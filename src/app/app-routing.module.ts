@@ -31,6 +31,8 @@ import { MapComponent } from './pages/map/map.component';
 import { MapToComponent } from './pages/map-to/map-to.component';
 import { AjaxComponent } from './pages/ajax/ajax.component';
 import { MergemapComponent } from './pages/mergemap/mergemap.component';
+import { MergemapTOComponent } from './pages/mergemap-to/mergemap-to.component';
+import { ConcatmapComponent } from './pages/concatmap/concatmap.component';
 
 const routes: Routes = [
   {
@@ -67,6 +69,8 @@ const routes: Routes = [
       { path: 'mapto', component: MapToComponent },
       { path: 'ajax', component: AjaxComponent },
       { path: 'mergemap', component: MergemapComponent },
+      { path: 'mergemapto', component: MergemapTOComponent },
+      { path: 'concatmap', component: ConcatmapComponent },
 
     ],
   },
