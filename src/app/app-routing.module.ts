@@ -30,6 +30,7 @@ import { SingleComponent } from './pages/single/single.component';
 import { MapComponent } from './pages/map/map.component';
 import { MapToComponent } from './pages/map-to/map-to.component';
 import { AjaxComponent } from './pages/ajax/ajax.component';
+import { MergemapComponent } from './pages/mergemap/mergemap.component';
 
 const routes: Routes = [
   {
@@ -65,7 +66,7 @@ const routes: Routes = [
       { path: 'map', component: MapComponent },
       { path: 'mapto', component: MapToComponent },
       { path: 'ajax', component: AjaxComponent },
-
+      { path: 'mergemap', component: MergemapComponent },
 
     ],
   },

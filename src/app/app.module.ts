@@ -37,6 +37,7 @@ import { SingleComponent } from './pages/single/single.component';
 import { MapComponent } from './pages/map/map.component';
 import { MapToComponent } from './pages/map-to/map-to.component';
 import { AjaxComponent } from './pages/ajax/ajax.component';
+import { MergemapComponent } from './pages/mergemap/mergemap.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AjaxComponent } from './pages/ajax/ajax.component';
     MapComponent,
     MapToComponent,
     AjaxComponent,
+    MergemapComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
