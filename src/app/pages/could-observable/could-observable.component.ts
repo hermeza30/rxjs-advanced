@@ -27,7 +27,7 @@ export class CouldObservableComponent implements OnInit {
     })
     setTimeout(()=>{
       interval$.subscribe(data=>{
-        console.log("observable2",data)
+        console.log("obs2",data)
       })
     },3000)
 
@@ -37,7 +37,12 @@ export class CouldObservableComponent implements OnInit {
     let subject$=new Subject();
     
     interval$.subscribe(subject$);
-    /** */
+    /** Como podemos ver la segunda subscripcion
+     * del observable solo recibe el valor a partir del 3
+     * no recibe todos los valores.
+     * A diferencia del could observable que cada subscripcion
+     * emite todos los valores.
+     */
 
     subject$.subscribe(data=>{
       console.log("Observer1",data)
@@ -45,7 +50,7 @@ export class CouldObservableComponent implements OnInit {
     setTimeout(()=>{
 
       subject$.subscribe((data)=>{
-        console.log("Observe2",data)
+        console.log("hotObs2",data)
       })
 
     },3000)
