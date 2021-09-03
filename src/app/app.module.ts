@@ -43,6 +43,8 @@ import { ConcatmapComponent } from './pages/concatmap/concatmap.component';
 import { ExhaustMapComponent } from './pages/exhaust-map/exhaust-map.component';
 import { SwitchMapComponent } from './pages/switch-map/switch-map.component';
 import { SwitchMapToComponent } from './pages/switch-map-to/switch-map-to.component';
+import { SubjectComponent } from './pages/subject/subject.component';
+import { CouldObservableComponent } from './pages/could-observable/could-observable.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { SwitchMapToComponent } from './pages/switch-map-to/switch-map-to.compon
     ExhaustMapComponent,
     SwitchMapComponent,
     SwitchMapToComponent,
+    SubjectComponent,
+    CouldObservableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

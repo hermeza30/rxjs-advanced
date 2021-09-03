@@ -36,6 +36,8 @@ import { ConcatmapComponent } from './pages/concatmap/concatmap.component';
 import { ExhaustMapComponent } from './pages/exhaust-map/exhaust-map.component';
 import { SwitchMapComponent } from './pages/switch-map/switch-map.component';
 import { SwitchMapToComponent } from './pages/switch-map-to/switch-map-to.component';
+import { SubjectComponent } from './pages/subject/subject.component';
+import { CouldObservableComponent } from './pages/could-observable/could-observable.component';
 
 const routes: Routes = [
   {
@@ -80,6 +82,14 @@ const routes: Routes = [
 
     ],
   },
+  {
+    path:'subject',
+    component:SubjectComponent
+  },
+  {
+    path:'couldobservable',
+    component:CouldObservableComponent
+  }
 ];
 
 @NgModule({
