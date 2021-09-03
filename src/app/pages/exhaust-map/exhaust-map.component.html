@@ -1,0 +1,14 @@
+<p>exhaust-map works!</p>
+<p>El eshausmap espera a que se complete cada innerObservable para mergear el siguiente. Si se emite un valor por el SourceObservable y el innerObservable todavia no se completo
+    el Exhaustmap lo va a ignorar y no lo va a tener en cuenta.
+</p>
+<p>
+    <br>
+    SO &nbsp;&nbsp; &nbsp;&nbsp;       1-------2---3---4
+    <br>      
+    INO. &nbsp;&nbsp;      1*10----2*10----4*10.  IGNORA 3  PORUQ EL 2 InnerOBser no se completo.
+    <br>
+
+    SALIDA. &nbsp;&nbsp;   10 20 40
+
+</p>

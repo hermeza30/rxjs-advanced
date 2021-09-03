@@ -33,6 +33,8 @@ import { AjaxComponent } from './pages/ajax/ajax.component';
 import { MergemapComponent } from './pages/mergemap/mergemap.component';
 import { MergemapTOComponent } from './pages/mergemap-to/mergemap-to.component';
 import { ConcatmapComponent } from './pages/concatmap/concatmap.component';
+import { ExhaustMapComponent } from './pages/exhaust-map/exhaust-map.component';
+import { SwitchMapComponent } from './pages/switch-map/switch-map.component';
 
 const routes: Routes = [
   {
@@ -71,6 +73,8 @@ const routes: Routes = [
       { path: 'mergemap', component: MergemapComponent },
       { path: 'mergemapto', component: MergemapTOComponent },
       { path: 'concatmap', component: ConcatmapComponent },
+      { path: 'exhaustmap', component: ExhaustMapComponent },
+      { path: 'switchmap', component: SwitchMapComponent },
 
     ],
   },
