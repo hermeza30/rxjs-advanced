@@ -35,6 +35,7 @@ import { MergemapTOComponent } from './pages/mergemap-to/mergemap-to.component';
 import { ConcatmapComponent } from './pages/concatmap/concatmap.component';
 import { ExhaustMapComponent } from './pages/exhaust-map/exhaust-map.component';
 import { SwitchMapComponent } from './pages/switch-map/switch-map.component';
+import { SwitchMapToComponent } from './pages/switch-map-to/switch-map-to.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,7 @@ const routes: Routes = [
       { path: 'concatmap', component: ConcatmapComponent },
       { path: 'exhaustmap', component: ExhaustMapComponent },
       { path: 'switchmap', component: SwitchMapComponent },
+      { path: 'switchmapto', component: SwitchMapToComponent },
 
     ],
   },
