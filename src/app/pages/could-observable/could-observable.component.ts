@@ -33,7 +33,7 @@ export class CouldObservableComponent implements OnInit {
 
   }
   hotObservable(){
-    let interval$=interval(1000);
+    let interval$=interval(1000);//couldoubservable
     let subject$=new Subject();
     
     interval$.subscribe(subject$);
@@ -42,6 +42,8 @@ export class CouldObservableComponent implements OnInit {
      * no recibe todos los valores.
      * A diferencia del could observable que cada subscripcion
      * emite todos los valores.
+     * En definitiva podemos convertir los could observable
+     * en hot observable con Subject
      */
 
     subject$.subscribe(data=>{

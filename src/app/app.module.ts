@@ -45,6 +45,8 @@ import { SwitchMapComponent } from './pages/switch-map/switch-map.component';
 import { SwitchMapToComponent } from './pages/switch-map-to/switch-map-to.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { CouldObservableComponent } from './pages/could-observable/could-observable.component';
+import { ConnectableComponent } from './pages/connectable/connectable.component';
+import { ShareComponent } from './pages/share/share.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { CouldObservableComponent } from './pages/could-observable/could-observa
     SwitchMapToComponent,
     SubjectComponent,
     CouldObservableComponent,
+    ConnectableComponent,
+    ShareComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
