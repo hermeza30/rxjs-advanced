@@ -40,6 +40,7 @@ import { SubjectComponent } from './pages/subject/subject.component';
 import { CouldObservableComponent } from './pages/could-observable/could-observable.component';
 import { ConnectableComponent } from './pages/connectable/connectable.component';
 import { ShareComponent } from './pages/share/share.component';
+import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subject.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path:'connectable',
     component:ConnectableComponent
+  }  ,
+  {
+    path:'behiviorsubject',
+    component:BehiviorSubjectComponent
   }
 ];
 
