@@ -41,6 +41,7 @@ import { CouldObservableComponent } from './pages/could-observable/could-observa
 import { ConnectableComponent } from './pages/connectable/connectable.component';
 import { ShareComponent } from './pages/share/share.component';
 import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subject.component';
+import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,10 @@ const routes: Routes = [
   {
     path:'behiviorsubject',
     component:BehiviorSubjectComponent
+  },
+  {
+    path:'replaysubject',
+    component:ReplaySubjectComponent
   }
 ];
 

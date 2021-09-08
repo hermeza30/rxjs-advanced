@@ -48,6 +48,7 @@ import { CouldObservableComponent } from './pages/could-observable/could-observa
 import { ConnectableComponent } from './pages/connectable/connectable.component';
 import { ShareComponent } from './pages/share/share.component';
 import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subject.component';
+import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subj
     ConnectableComponent,
     ShareComponent,
     BehiviorSubjectComponent,
+    ReplaySubjectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
