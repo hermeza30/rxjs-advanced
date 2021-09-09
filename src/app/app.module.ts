@@ -49,6 +49,7 @@ import { ConnectableComponent } from './pages/connectable/connectable.component'
 import { ShareComponent } from './pages/share/share.component';
 import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subject.component';
 import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.component';
+import { AsyncSubjectComponent } from './pages/async-subject/async-subject.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.co
     ShareComponent,
     BehiviorSubjectComponent,
     ReplaySubjectComponent,
+    AsyncSubjectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
