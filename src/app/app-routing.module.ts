@@ -43,6 +43,7 @@ import { ShareComponent } from './pages/share/share.component';
 import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subject.component';
 import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.component';
 import { AsyncSubjectComponent } from './pages/async-subject/async-subject.component';
+import { VoidSubjectComponent } from './pages/void-subject/void-subject.component';
 
 const routes: Routes = [
   {
@@ -112,6 +113,10 @@ const routes: Routes = [
   {
     path:'asyncsubject',
     component:AsyncSubjectComponent
+  },
+  {
+    path:'voidsubject',
+    component:VoidSubjectComponent
   }
 ];
 
