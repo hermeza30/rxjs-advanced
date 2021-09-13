@@ -44,6 +44,7 @@ import { BehiviorSubjectComponent } from './pages/behivior-subject/behivior-subj
 import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.component';
 import { AsyncSubjectComponent } from './pages/async-subject/async-subject.component';
 import { VoidSubjectComponent } from './pages/void-subject/void-subject.component';
+import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
 
 const routes: Routes = [
   {
@@ -117,6 +118,10 @@ const routes: Routes = [
   {
     path:'voidsubject',
     component:VoidSubjectComponent
+  },
+  {
+    path:'catcherror',
+    component:CatchErrorComponent
   }
 ];
 
