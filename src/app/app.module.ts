@@ -52,6 +52,8 @@ import { ReplaySubjectComponent } from './pages/replay-subject/replay-subject.co
 import { AsyncSubjectComponent } from './pages/async-subject/async-subject.component';
 import { VoidSubjectComponent } from './pages/void-subject/void-subject.component';
 import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
+import { RetryComponent } from './pages/retry/retry.component';
+import { RetryWhenComponent } from './pages/retry-when/retry-when.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
     AsyncSubjectComponent,
     VoidSubjectComponent,
     CatchErrorComponent,
+    RetryComponent,
+    RetryWhenComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
