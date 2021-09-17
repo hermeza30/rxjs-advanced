@@ -13,6 +13,7 @@ export class RetryWhenComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //Hlanding Error
     //Retrywhen sirve para catchear errores y en caso de que ocurra uno hacer un retry.
 
     let userData={

@@ -47,6 +47,7 @@ import { VoidSubjectComponent } from './pages/void-subject/void-subject.componen
 import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
 import { RetryComponent } from './pages/retry/retry.component';
 import { RetryWhenComponent } from './pages/retry-when/retry-when.component';
+import { CombineLatestComponent } from './pages/combine-latest/combine-latest.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,7 @@ const routes: Routes = [
       { path: 'share', component: ShareComponent },
       { path: 'retry', component: RetryComponent },
       { path: 'retrywhen', component: RetryWhenComponent },
+      { path: 'combinelatest', component: CombineLatestComponent },
 
     ],
   },
