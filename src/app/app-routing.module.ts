@@ -48,6 +48,8 @@ import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
 import { RetryComponent } from './pages/retry/retry.component';
 import { RetryWhenComponent } from './pages/retry-when/retry-when.component';
 import { CombineLatestComponent } from './pages/combine-latest/combine-latest.component';
+import { ConcatComponent } from './pages/concat/concat.component';
+import { ForkJoinComponent } from './pages/fork-join/fork-join.component';
 
 const routes: Routes = [
   {
@@ -93,6 +95,8 @@ const routes: Routes = [
       { path: 'retry', component: RetryComponent },
       { path: 'retrywhen', component: RetryWhenComponent },
       { path: 'combinelatest', component: CombineLatestComponent },
+      { path: 'concat', component: ConcatComponent },
+      { path: 'forkjoin', component: ForkJoinComponent },
 
     ],
   },

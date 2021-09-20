@@ -55,6 +55,8 @@ import { CatchErrorComponent } from './pages/catch-error/catch-error.component';
 import { RetryComponent } from './pages/retry/retry.component';
 import { RetryWhenComponent } from './pages/retry-when/retry-when.component';
 import { CombineLatestComponent } from './pages/combine-latest/combine-latest.component';
+import { ConcatComponent } from './pages/concat/concat.component';
+import { ForkJoinComponent } from './pages/fork-join/fork-join.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +113,8 @@ import { CombineLatestComponent } from './pages/combine-latest/combine-latest.co
     RetryComponent,
     RetryWhenComponent,
     CombineLatestComponent,
+    ConcatComponent,
+    ForkJoinComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

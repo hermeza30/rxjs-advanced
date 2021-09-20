@@ -25,6 +25,8 @@ export class CombineLatestComponent implements OnInit {
     })
 
     combineLatest([interval$,source2$]).subscribe(obs)//Se completa una vez que ambos han terminado.
+
+
   }
 
 }
