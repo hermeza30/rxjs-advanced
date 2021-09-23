@@ -52,6 +52,8 @@ import { ConcatComponent } from './pages/concat/concat.component';
 import { ForkJoinComponent } from './pages/fork-join/fork-join.component';
 import { MergeComponent } from './pages/merge/merge.component';
 import { PartitionComponent } from './pages/partition/partition.component';
+import { RaceComponent } from './pages/race/race.component';
+import { ZipComponent } from './pages/zip/zip.component';
 
 const routes: Routes = [
   {
@@ -101,6 +103,8 @@ const routes: Routes = [
       { path: 'forkjoin', component: ForkJoinComponent },
       { path: 'merge', component: MergeComponent },
       { path: 'partition', component: PartitionComponent },
+      { path: 'race', component: RaceComponent },
+      { path: 'zip', component: ZipComponent },
 
     ],
   },

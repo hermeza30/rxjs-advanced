@@ -59,6 +59,8 @@ import { ConcatComponent } from './pages/concat/concat.component';
 import { ForkJoinComponent } from './pages/fork-join/fork-join.component';
 import { MergeComponent } from './pages/merge/merge.component';
 import { PartitionComponent } from './pages/partition/partition.component';
+import { RaceComponent } from './pages/race/race.component';
+import { ZipComponent } from './pages/zip/zip.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +121,8 @@ import { PartitionComponent } from './pages/partition/partition.component';
     ForkJoinComponent,
     MergeComponent,
     PartitionComponent,
+    RaceComponent,
+    ZipComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
