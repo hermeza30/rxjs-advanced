@@ -54,6 +54,7 @@ import { MergeComponent } from './pages/merge/merge.component';
 import { PartitionComponent } from './pages/partition/partition.component';
 import { RaceComponent } from './pages/race/race.component';
 import { ZipComponent } from './pages/zip/zip.component';
+import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
 
 const routes: Routes = [
   {
@@ -140,6 +141,10 @@ const routes: Routes = [
   {
     path:'catcherror',
     component:CatchErrorComponent
+  },
+  {
+    path:'mergescomponent',
+    component:MergesComponentsComponent
   }
 ];
 
