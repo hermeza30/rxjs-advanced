@@ -24,7 +24,7 @@ export class ReplaySubjectComponent implements OnInit {
     rps$.next(2);
     rps$.next(3);
     rps$.next(4);
-    
+
     setTimeout(()=>{
       rps$.subscribe((data)=>{
         console.log("Obb",data)
@@ -32,10 +32,15 @@ export class ReplaySubjectComponent implements OnInit {
     },2000)
   }
   replaySubjectWithParameter(){
-    //2 como parametro solo permitira ver el 3 y 4
+    //2 como parametro solo permitira ver el 3 y 4 y 5
     //cuanto dura storeado los oldvalues 1 segundo
     // let rps$=new ReplaySubject(2);
-    let rps$=new ReplaySubject(2,1000);
+    // let rps$=new ReplaySubject();
+    let rps$=new ReplaySubject(2,500);//Probar con 0 1 2 3
+    // let rps$=new ReplaySubject(2,1000);//Probar con 0 1 2 3
+    // let rps$=new ReplaySubject(2,500);//Probar con 0 1 2 3
+    // let rps$=new ReplaySubject(1);//Probar con 0 1 2 3
+    // let rps$=new ReplaySubject(2);//Probar con 0 1 2 3
     rps$.next(1);
     rps$.subscribe((data)=>{
       console.log("ObserverA",data)
@@ -43,7 +48,23 @@ export class ReplaySubjectComponent implements OnInit {
     rps$.next(2);
     rps$.next(3);
     rps$.next(4);
-    
+    setTimeout(()=>{
+      rps$.next(5);
+      rps$.subscribe((data)=>{
+        console.log("ObsB",data)
+      });
+    },3000)
+  }
+  replaySubjectWithParameter2(){
+    // let rps$=new ReplaySubject();
+    let rps$=new ReplaySubject();//Muestra todos los valores
+    rps$.next(1);
+    rps$.subscribe((data)=>{
+      console.log("ObserverA",data)
+    });
+    rps$.next(2);
+    rps$.next(3);
+    rps$.next(4);
     setTimeout(()=>{
       rps$.next(5);
       rps$.subscribe((data)=>{

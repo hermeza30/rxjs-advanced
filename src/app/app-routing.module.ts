@@ -55,6 +55,7 @@ import { PartitionComponent } from './pages/partition/partition.component';
 import { RaceComponent } from './pages/race/race.component';
 import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
+import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
 
 const routes: Routes = [
   {
@@ -145,6 +146,10 @@ const routes: Routes = [
   {
     path:'mergescomponent',
     component:MergesComponentsComponent
+  },
+  {
+    path:'concatscomponent',
+    component:ConcatComponentComponent
   }
 ];
 

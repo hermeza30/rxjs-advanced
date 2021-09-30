@@ -62,6 +62,7 @@ import { PartitionComponent } from './pages/partition/partition.component';
 import { RaceComponent } from './pages/race/race.component';
 import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
+import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { MergesComponentsComponent } from './pages/merges-components/merges-comp
     RaceComponent,
     ZipComponent,
     MergesComponentsComponent,
+    ConcatComponentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
