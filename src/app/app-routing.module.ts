@@ -56,6 +56,7 @@ import { RaceComponent } from './pages/race/race.component';
 import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
 import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
+import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevsexhaustvsconcat/switchvsmergevsexhaustvsconcat.component';
 
 const routes: Routes = [
   {
@@ -150,6 +151,10 @@ const routes: Routes = [
   {
     path:'concatscomponent',
     component:ConcatComponentComponent
+  },
+  {
+    path:'switchvsmergevsexhaustvsconcat',
+    component:SwitchvsmergevsexhaustvsconcatComponent
   }
 ];
 

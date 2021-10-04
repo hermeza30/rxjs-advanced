@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,6 +64,7 @@ import { RaceComponent } from './pages/race/race.component';
 import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
 import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
+import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevsexhaustvsconcat/switchvsmergevsexhaustvsconcat.component';
 
 @NgModule({
   declarations: [
@@ -127,8 +129,9 @@ import { ConcatComponentComponent } from './pages/concat-component/concat-compon
     ZipComponent,
     MergesComponentsComponent,
     ConcatComponentComponent,
+    SwitchvsmergevsexhaustvsconcatComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
