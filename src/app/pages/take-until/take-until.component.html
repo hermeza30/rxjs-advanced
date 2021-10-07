@@ -1,7 +1,25 @@
 <p>take-until works!</p>
 <div>
-    <button (click)="startTimer()">StartTimer</button>
+  <button (click)="startTimer()">StartTimer</button>
 </div>
 <div>
-    <button id="takeuntil">EndTimer</button>
+  <button id="takeuntil">EndTimer</button>
 </div>
+<p>
+  Lets values pass until a second Observable, notifier, emits a value. Then, it
+  completes.
+</p>
+<div>
+  <img
+    src="/assets/images/takeUntil.png"
+    style="width: 100%; height: 100%"
+    alt=""
+  />
+</div>
+<p>
+  takeUntil subscribes and begins mirroring the source Observable. It also
+  monitors a second Observable, notifier that you provide. If the notifier emits
+  a value, the output Observable stops mirroring the source Observable and
+  completes. If the notifier doesn't emit any value and completes then takeUntil
+  will pass all values.
+</p>
