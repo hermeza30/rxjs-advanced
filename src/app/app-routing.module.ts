@@ -57,6 +57,7 @@ import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
 import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
 import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevsexhaustvsconcat/switchvsmergevsexhaustvsconcat.component';
+import { SchedulersComponent } from './pages/schedulers/schedulers.component';
 
 const routes: Routes = [
   {
@@ -78,7 +79,10 @@ const routes: Routes = [
       { path: 'skipwhile', component: SkipWhileComponent },
       { path: 'distinct', component: DistinctComponent },
       { path: 'distinctuntilchange', component: DistinctUntilChangeComponent },
-      { path: 'distinctuntilkeychange', component: DistinctUntilKeyChangeComponent },
+      {
+        path: 'distinctuntilkeychange',
+        component: DistinctUntilKeyChangeComponent,
+      },
       { path: 'filter', component: FilterComponent },
       { path: 'sample', component: SampleComponent },
       { path: 'audit', component: AuditComponent },
@@ -108,54 +112,56 @@ const routes: Routes = [
       { path: 'partition', component: PartitionComponent },
       { path: 'race', component: RaceComponent },
       { path: 'zip', component: ZipComponent },
-
     ],
   },
   {
-    path:'subject',
-    component:SubjectComponent
+    path: 'subject',
+    component: SubjectComponent,
   },
   {
-    path:'couldobservable',
-    component:CouldObservableComponent
-  }
-  ,
-  {
-    path:'connectable',
-    component:ConnectableComponent
-  }  ,
-  {
-    path:'behiviorsubject',
-    component:BehiviorSubjectComponent
+    path: 'couldobservable',
+    component: CouldObservableComponent,
   },
   {
-    path:'replaysubject',
-    component:ReplaySubjectComponent
+    path: 'connectable',
+    component: ConnectableComponent,
   },
   {
-    path:'asyncsubject',
-    component:AsyncSubjectComponent
+    path: 'behiviorsubject',
+    component: BehiviorSubjectComponent,
   },
   {
-    path:'voidsubject',
-    component:VoidSubjectComponent
+    path: 'replaysubject',
+    component: ReplaySubjectComponent,
   },
   {
-    path:'catcherror',
-    component:CatchErrorComponent
+    path: 'asyncsubject',
+    component: AsyncSubjectComponent,
   },
   {
-    path:'mergescomponent',
-    component:MergesComponentsComponent
+    path: 'voidsubject',
+    component: VoidSubjectComponent,
   },
   {
-    path:'concatscomponent',
-    component:ConcatComponentComponent
+    path: 'catcherror',
+    component: CatchErrorComponent,
   },
   {
-    path:'switchvsmergevsexhaustvsconcat',
-    component:SwitchvsmergevsexhaustvsconcatComponent
-  }
+    path: 'mergescomponent',
+    component: MergesComponentsComponent,
+  },
+  {
+    path: 'concatscomponent',
+    component: ConcatComponentComponent,
+  },
+  {
+    path: 'switchvsmergevsexhaustvsconcat',
+    component: SwitchvsmergevsexhaustvsconcatComponent,
+  },
+  {
+    path: 'schedulers',
+    component: SchedulersComponent,
+  },
 ];
 
 @NgModule({

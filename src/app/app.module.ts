@@ -65,6 +65,7 @@ import { ZipComponent } from './pages/zip/zip.component';
 import { MergesComponentsComponent } from './pages/merges-components/merges-components.component';
 import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
 import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevsexhaustvsconcat/switchvsmergevsexhaustvsconcat.component';
+import { SchedulersComponent } from './pages/schedulers/schedulers.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevs
     ZipComponent,
     MergesComponentsComponent,
     ConcatComponentComponent,
-    SwitchvsmergevsexhaustvsconcatComponent
+    SwitchvsmergevsexhaustvsconcatComponent,
+    SchedulersComponent
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
