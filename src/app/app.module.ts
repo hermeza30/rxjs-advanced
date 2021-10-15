@@ -66,6 +66,7 @@ import { MergesComponentsComponent } from './pages/merges-components/merges-comp
 import { ConcatComponentComponent } from './pages/concat-component/concat-component.component';
 import { SwitchvsmergevsexhaustvsconcatComponent } from './pages/switchvsmergevsexhaustvsconcat/switchvsmergevsexhaustvsconcat.component';
 import { SchedulersComponent } from './pages/schedulers/schedulers.component';
+import { DeferComponent } from './pages/defer/defer.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { SchedulersComponent } from './pages/schedulers/schedulers.component';
     MergesComponentsComponent,
     ConcatComponentComponent,
     SwitchvsmergevsexhaustvsconcatComponent,
-    SchedulersComponent
+    SchedulersComponent,
+    DeferComponent
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
