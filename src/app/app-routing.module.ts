@@ -61,6 +61,8 @@ import { SchedulersComponent } from './pages/schedulers/schedulers.component';
 import { DeferComponent } from './pages/defer/defer.component';
 import { RangeComponent } from './pages/range/range.component';
 import { GenerateComponent } from './pages/generate/generate.component';
+import { TimerComponent } from './pages/timer/timer.component';
+import { CountComponent } from './pages/count/count.component';
 
 const routes: Routes = [
   {
@@ -118,6 +120,8 @@ const routes: Routes = [
       { path: 'defer', component: DeferComponent },
       { path: 'range', component: RangeComponent },
       { path: 'generate', component: GenerateComponent },
+      { path: 'timer', component: TimerComponent },
+      { path: 'count', component: CountComponent },
     ],
   },
   {
