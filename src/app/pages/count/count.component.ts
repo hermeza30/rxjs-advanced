@@ -13,6 +13,7 @@ export class CountComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //Solo cuando se completa el observable muestra el valor
     this.contar();
     this.contar2()
   }
