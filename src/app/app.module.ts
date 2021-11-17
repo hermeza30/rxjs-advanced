@@ -71,6 +71,8 @@ import { RangeComponent } from './pages/range/range.component';
 import { GenerateComponent } from './pages/generate/generate.component';
 import { TimerComponent } from './pages/timer/timer.component';
 import { CountComponent } from './pages/count/count.component';
+import { MaxComponent } from './pages/max/max.component';
+import { MinComponent } from './pages/min/min.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +143,9 @@ import { CountComponent } from './pages/count/count.component';
     RangeComponent,
     GenerateComponent,
     TimerComponent,
-    CountComponent
+    CountComponent,
+    MaxComponent,
+    MinComponent
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],

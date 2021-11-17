@@ -27,7 +27,7 @@ export class VoidSubjectComponent implements OnInit {
       console.log("data",data)
     })
     subj$.next("hola")
-    subj$.next("pepe")
+    subj$.next(2)
   }
   conVoid(){
     let subj$=new Subject<void>();

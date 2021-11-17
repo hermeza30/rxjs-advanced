@@ -63,6 +63,8 @@ import { RangeComponent } from './pages/range/range.component';
 import { GenerateComponent } from './pages/generate/generate.component';
 import { TimerComponent } from './pages/timer/timer.component';
 import { CountComponent } from './pages/count/count.component';
+import { MaxComponent } from './pages/max/max.component';
+import { MinComponent } from './pages/min/min.component';
 
 const routes: Routes = [
   {
@@ -122,6 +124,8 @@ const routes: Routes = [
       { path: 'generate', component: GenerateComponent },
       { path: 'timer', component: TimerComponent },
       { path: 'count', component: CountComponent },
+      { path: 'max', component: MaxComponent },
+      { path: 'min', component: MinComponent },
     ],
   },
   {
