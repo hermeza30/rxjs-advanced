@@ -73,6 +73,8 @@ import { TimerComponent } from './pages/timer/timer.component';
 import { CountComponent } from './pages/count/count.component';
 import { MaxComponent } from './pages/max/max.component';
 import { MinComponent } from './pages/min/min.component';
+import { ReduceComponent } from './pages/reduce/reduce.component';
+import { ScanComponent } from './pages/scan/scan.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +147,9 @@ import { MinComponent } from './pages/min/min.component';
     TimerComponent,
     CountComponent,
     MaxComponent,
-    MinComponent
+    MinComponent,
+    ReduceComponent,
+    ScanComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],

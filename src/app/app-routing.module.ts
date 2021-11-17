@@ -65,6 +65,8 @@ import { TimerComponent } from './pages/timer/timer.component';
 import { CountComponent } from './pages/count/count.component';
 import { MaxComponent } from './pages/max/max.component';
 import { MinComponent } from './pages/min/min.component';
+import { ReduceComponent } from './pages/reduce/reduce.component';
+import { ScanComponent } from './pages/scan/scan.component';
 
 const routes: Routes = [
   {
@@ -126,6 +128,8 @@ const routes: Routes = [
       { path: 'count', component: CountComponent },
       { path: 'max', component: MaxComponent },
       { path: 'min', component: MinComponent },
+      { path: 'reduce', component: ReduceComponent },
+      { path: 'scan', component: ScanComponent },
     ],
   },
   {

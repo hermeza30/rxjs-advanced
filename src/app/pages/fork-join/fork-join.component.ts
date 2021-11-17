@@ -1,50 +1,94 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin, of, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { obs } from '../../interface';
 
 @Component({
   selector: 'app-fork-join',
   templateUrl: './fork-join.component.html',
-  styleUrls: ['./fork-join.component.css']
+  styleUrls: ['./fork-join.component.css'],
 })
 export class ForkJoinComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    let source1$=of(1,2,3,4);
-    let source2$=of('a','b');
-    forkJoin([source1$,source2$]).subscribe(obs)
-    this.retornoComoObjeto();
-    this.siNuncaSeCompleta();
-    this.siOcurrerUnError();
+    let source1$ = of(1, 2, 3, 4);
+    let source2$ = of('a', 'b');
+    // forkJoin([source1$,source2$]).subscribe(obs)
+    // this.retornoComoObjeto();
+    // this.siNuncaSeCompleta();
+    //this.siOcurrerUnError();
+    //this.unsubscribeForkJoin();
+    // this.unsubscribeTakeOneForkJoin();
+    this.unsubscribeErrorForkJoin();
   }
-  retornoComoObjeto(){
-    console.log("/////Como objeto")
-    let source1$=of(1,2,3,4);
-    let source2$=of('a','b');
-    forkJoin({source1:source1$,source2:source2$}).subscribe(obs)
-
+  retornoComoObjeto() {
+    console.log('/////Como objeto');
+    let source1$ = of(1, 2, 3, 4);
+    let source2$ = of('a', 'b');
+    forkJoin({ source1: source1$, source2: source2$ }).subscribe(obs);
   }
-  siNuncaSeCompleta(){
-    console.log("/////Si no se completa")
-    let source1$=new Observable((observer)=>{
+  siNuncaSeCompleta() {
+    console.log('/////Si no se completa');
+    let source1$ = new Observable((observer) => {
       observer.next(1);
       observer.next(2);
-    })
-    let source2$=of('a','b');
-    forkJoin({source1:source1$,source2:source2$}).subscribe(obs)
-
+    });
+    let source2$ = of('a', 'b');
+    forkJoin({ source1: source1$, source2: source2$ }).subscribe(obs);
   }
-  siOcurrerUnError(){
-    console.log("/////Si ocurre un error")
-    let source1$=new Observable((observer)=>{
+  siOcurrerUnError() {
+    console.log('/////Si ocurre un error');
+    let source1$ = new Observable((observer) => {
       observer.next(1);
       observer.next(2);
-      observer.error();
-    })
-    let source2$=of('a','b');
-    forkJoin({source1:source1$,source2:source2$}).subscribe(obs)
+      observer.error('Error');
+    });
+    let source2$ = of('a', 'b');
 
+    forkJoin({ source1: source1$, source2: source2$ }).subscribe(obs);
+  }
+  unsubscribeForkJoin() {
+    console.log('/////Unsubscribe');
+    let source1$ = new Observable((observer) => {
+      observer.next(1);
+      observer.next(2);
+    });
+    let subscription = forkJoin({ source1: source1$ }).subscribe(obs);
+    setTimeout(() => {
+      console.log('antes de la unsubscription', subscription);
+      subscription.unsubscribe();
+      console.log('despues de la unsubscription', subscription);
+    }, 2000);
+    /** Si el observable no se completa a los 2 segundos mato la subscrpcion*/
+  }
+  unsubscribeTakeOneForkJoin() {
+    console.log('/////Unsubscribe take1');
+    let source1$ = new Observable((observer) => {
+      observer.next(1);
+      observer.next(2);
+    }).pipe(take(1));
+    let subscription = forkJoin({ source1: source1$ }).subscribe(obs);
+    setTimeout(() => {
+      console.log('antes de la unsubscription', subscription);
+      subscription.unsubscribe();
+      console.log('despues de la unsubscription', subscription);
+    }, 4000);
+    /** Si usamos el take(1) se completa el observable y automaticamente se unsubscribe*/
+  }
+  unsubscribeErrorForkJoin() {
+    console.log('/////Unsubscribe error');
+    let source1$ = new Observable((observer) => {
+      observer.next(2);
+      observer.next(3);
+      observer.error("Error")
+    }).pipe(take(1));
+    let subscription = forkJoin({ source1: source1$ }).subscribe(obs);
+    setTimeout(() => {
+      console.log('antes de la unsubscription', subscription);
+      subscription.unsubscribe();
+      console.log('despues de la unsubscription', subscription);
+    }, 4000);
+    /** Si ocurre un error automaticamente se unsubscribe*/
   }
 }
