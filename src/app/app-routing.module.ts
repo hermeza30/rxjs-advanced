@@ -67,6 +67,7 @@ import { MaxComponent } from './pages/max/max.component';
 import { MinComponent } from './pages/min/min.component';
 import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
+import { IsemptyComponent } from './pages/isempty/isempty.component';
 
 const routes: Routes = [
   {
@@ -130,6 +131,7 @@ const routes: Routes = [
       { path: 'min', component: MinComponent },
       { path: 'reduce', component: ReduceComponent },
       { path: 'scan', component: ScanComponent },
+      { path: 'isempty', component: IsemptyComponent },
     ],
   },
   {

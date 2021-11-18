@@ -75,6 +75,7 @@ import { MaxComponent } from './pages/max/max.component';
 import { MinComponent } from './pages/min/min.component';
 import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
+import { IsemptyComponent } from './pages/isempty/isempty.component';
 
 @NgModule({
   declarations: [
@@ -150,6 +151,7 @@ import { ScanComponent } from './pages/scan/scan.component';
     MinComponent,
     ReduceComponent,
     ScanComponent,
+    IsemptyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
