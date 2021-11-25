@@ -1,7 +1,7 @@
 import { publishFacade } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { interval, observable, ConnectableObservable } from 'rxjs';
-import { publish, refCount, share } from 'rxjs/operators';
+import { publish, refCount, share, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-share',
@@ -14,7 +14,7 @@ export class ShareComponent implements OnInit {
 
   ngOnInit(): void {
     /**Para convertir un Colud OBs en un Hot Observable
-     * podemos usar el publish 
+     * podemos usar el publish
      */
     // this.usandoPublish();//DEPRECATED
     // this.usandoPublishConRefCount()//DEPRECATED
@@ -49,10 +49,14 @@ export class ShareComponent implements OnInit {
     },3000)
   }
   usandoSHARE(){
-    let source$=interval(1000).pipe(share());
+    let source$=interval(1000).pipe(take(10),share());
 
     source$.subscribe(data=>{
       console.log("Observabl1",data)
+    },()=>{
+
+    },()=>{
+      console.log("Completed")
     })
 
     setTimeout(()=>{

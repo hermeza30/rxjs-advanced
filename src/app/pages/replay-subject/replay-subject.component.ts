@@ -12,11 +12,12 @@ export class ReplaySubjectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.replaySubjectWithParameter();
-    // this.replaySubjectWithError();
+    // this.replaySubjectWithParameter();
+    this.replaySubjectWithError();
+    // this.replaySubjectOutParameter();
   }
   replaySubjectOutParameter(){
-    let rps$=new ReplaySubject();
+    let rps$=new ReplaySubject(1);
     rps$.next(1);
     rps$.subscribe((data)=>{
       console.log("ObserverA",data)
@@ -44,7 +45,7 @@ export class ReplaySubjectComponent implements OnInit {
     rps$.next(1);
     rps$.subscribe((data)=>{
       console.log("ObserverA",data)
-    });
+    },(err)=>{console.log(err)});
     rps$.next(2);
     rps$.next(3);
     rps$.next(4);
@@ -77,16 +78,17 @@ export class ReplaySubjectComponent implements OnInit {
     rps$.next(1);
     rps$.subscribe((data)=>{
       console.log("ObserverA",data)
-    });
+    },(err)=>{console.log(err)});
     rps$.next(2);
     rps$.next(3);
-    rps$.next(4);
     //No importa si se genera un error antes de la 2da subscripcion, emite los ultimos values
     rps$.error('Error ocurred');
+    rps$.next(4);
+
     setTimeout(()=>{
       rps$.subscribe((data)=>{
         console.log("Obb",data)
-      });
+      },(err)=>{console.log(err)});
     },2000)
   }
 

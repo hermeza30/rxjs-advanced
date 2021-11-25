@@ -6,23 +6,24 @@ import { obs } from 'src/app/interface';
 @Component({
   selector: 'app-throttle',
   templateUrl: './throttle.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ThrottleComponent implements OnInit {
-  public s:Subscription=new Subscription();
-  constructor() { }
+  public s: Subscription = new Subscription();
+  constructor() {}
 
   ngOnInit(): void {
-    const keyvent$=fromEvent(document,'keypress').pipe(
-      throttle(v=>interval(5000),{
-        leading:true,
-        trailing:true
-      })
-    ).subscribe(obs);
-      this.s.add(keyvent$);
+    const keyvent$ = fromEvent(document, 'keypress')
+      .pipe(
+        throttle((v) => interval(5000), {/**Toma el primero espera 5 segun y devuelve el ultimo */
+          leading: true,
+          trailing: true,
+        })
+      )
+      .subscribe(obs);
+    this.s.add(keyvent$);
   }
-ngOnDestroy(){
-  this.s.unsubscribe();
-}
+  ngOnDestroy() {
+    this.s.unsubscribe();
+  }
 }
