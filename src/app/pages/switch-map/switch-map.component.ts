@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { filter, switchMap, take } from 'rxjs/operators';
+import { filter, switchMap, take, tap } from 'rxjs/operators';
 import { obs } from 'src/app/interface';
 
 @Component({
@@ -15,7 +15,11 @@ export class SwitchMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    of(1,2,3,4,5).pipe(filter(id=>id>0),switchMap(id=>ajax.getJSON(`https://jsonplaceholder.typicode.com/posts/${id}`))).subscribe(obs)
+    of(1,2,3,4,5).pipe(tap((val)=>{
+    }),filter(id=>id>0),switchMap(id=>{
+      // console.log("id",id)
+      return ajax.getJSON(`https://jsonplaceholder.typicode.com/posts/${id}`).pipe(tap(id=>console.log))
+    })).subscribe(obs)
 
   }
 

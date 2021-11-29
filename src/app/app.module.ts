@@ -76,6 +76,7 @@ import { MinComponent } from './pages/min/min.component';
 import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { IsemptyComponent } from './pages/isempty/isempty.component';
+import { IntervalComponent } from './pages/interval/interval.component';
 
 @NgModule({
   declarations: [
@@ -152,6 +153,7 @@ import { IsemptyComponent } from './pages/isempty/isempty.component';
     ReduceComponent,
     ScanComponent,
     IsemptyComponent,
+    IntervalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],

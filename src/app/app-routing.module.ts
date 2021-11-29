@@ -68,6 +68,7 @@ import { MinComponent } from './pages/min/min.component';
 import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { IsemptyComponent } from './pages/isempty/isempty.component';
+import { IntervalComponent } from './pages/interval/interval.component';
 
 const routes: Routes = [
   {
@@ -132,6 +133,7 @@ const routes: Routes = [
       { path: 'reduce', component: ReduceComponent },
       { path: 'scan', component: ScanComponent },
       { path: 'isempty', component: IsemptyComponent },
+      { path: 'interval', component: IntervalComponent },
     ],
   },
   {
