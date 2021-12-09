@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin, of, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { forkJoin, of, Observable, timer, asyncScheduler } from 'rxjs';
+import { take, debounce, debounceTime, throttle, throttleTime, observeOn } from 'rxjs/operators';
 import { obs } from '../../interface';
 
 @Component({
@@ -13,14 +13,14 @@ export class ForkJoinComponent implements OnInit {
 
   ngOnInit(): void {
     let source1$ = of(1, 2, 3, 4);
-    let source2$ = of('a', 'b');
-    // forkJoin([source1$,source2$]).subscribe(obs)
+    let source2$ = of('a', 'b','c');
+    forkJoin([source1$,source2$]).subscribe(obs)
     // this.retornoComoObjeto();
     // this.siNuncaSeCompleta();
     //this.siOcurrerUnError();
     //this.unsubscribeForkJoin();
     // this.unsubscribeTakeOneForkJoin();
-    this.unsubscribeErrorForkJoin();
+   // this.unsubscribeErrorForkJoin();
   }
   retornoComoObjeto() {
     console.log('/////Como objeto');
@@ -90,5 +90,10 @@ export class ForkJoinComponent implements OnInit {
       console.log('despues de la unsubscription', subscription);
     }, 4000);
     /** Si ocurre un error automaticamente se unsubscribe*/
+  }
+  ejecucionForkJoinAsyncObservable(){
+    let source1$ = of(1, 2, 3, 4);
+    let source2$ = of('a', 'b','c').pipe(observeOn(asyncScheduler,5000));
+    forkJoin([source1$,source2$]).pipe().subscribe(obs)
   }
 }
