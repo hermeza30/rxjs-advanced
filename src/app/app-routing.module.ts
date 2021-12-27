@@ -69,6 +69,10 @@ import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { IsemptyComponent } from './pages/isempty/isempty.component';
 import { IntervalComponent } from './pages/interval/interval.component';
+import { FindindexComponent } from './pages/findindex/findindex.component';
+import { FindComponent } from './pages/find/find.component';
+import { EveryComponent } from './pages/every/every.component';
+import { DelayComponent } from './pages/delay/delay.component';
 
 const routes: Routes = [
   {
@@ -134,6 +138,10 @@ const routes: Routes = [
       { path: 'scan', component: ScanComponent },
       { path: 'isempty', component: IsemptyComponent },
       { path: 'interval', component: IntervalComponent },
+      { path: 'findindex', component: FindindexComponent },
+      { path: 'find', component: FindComponent },
+      { path: 'every', component: EveryComponent },
+      { path: 'delay', component: DelayComponent },
     ],
   },
   {

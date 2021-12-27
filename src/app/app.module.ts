@@ -77,6 +77,10 @@ import { ReduceComponent } from './pages/reduce/reduce.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { IsemptyComponent } from './pages/isempty/isempty.component';
 import { IntervalComponent } from './pages/interval/interval.component';
+import { FindindexComponent } from './pages/findindex/findindex.component';
+import { FindComponent } from './pages/find/find.component';
+import { EveryComponent } from './pages/every/every.component';
+import { DelayComponent } from './pages/delay/delay.component';
 
 @NgModule({
   declarations: [
@@ -154,6 +158,10 @@ import { IntervalComponent } from './pages/interval/interval.component';
     ScanComponent,
     IsemptyComponent,
     IntervalComponent,
+    FindindexComponent,
+    FindComponent,
+    EveryComponent,
+    DelayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
