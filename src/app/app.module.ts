@@ -81,6 +81,12 @@ import { FindindexComponent } from './pages/findindex/findindex.component';
 import { FindComponent } from './pages/find/find.component';
 import { EveryComponent } from './pages/every/every.component';
 import { DelayComponent } from './pages/delay/delay.component';
+import { DefaultemptyComponent } from './pages/defaultempty/defaultempty.component';
+import { ToarrayComponent } from './pages/toarray/toarray.component';
+import { SubscribeonComponent } from './pages/subscribeon/subscribeon.component';
+import { ObserveronComponent } from './pages/observeron/observeron.component';
+import { MaterializeComponent } from './pages/materialize/materialize.component';
+import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.component';
 
 @NgModule({
   declarations: [
@@ -162,6 +168,12 @@ import { DelayComponent } from './pages/delay/delay.component';
     FindComponent,
     EveryComponent,
     DelayComponent,
+    DefaultemptyComponent,
+    ToarrayComponent,
+    SubscribeonComponent,
+    ObserveronComponent,
+    MaterializeComponent,
+    DesmaterializeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],

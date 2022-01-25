@@ -73,6 +73,12 @@ import { FindindexComponent } from './pages/findindex/findindex.component';
 import { FindComponent } from './pages/find/find.component';
 import { EveryComponent } from './pages/every/every.component';
 import { DelayComponent } from './pages/delay/delay.component';
+import { DefaultemptyComponent } from './pages/defaultempty/defaultempty.component';
+import { ToarrayComponent } from './pages/toarray/toarray.component';
+import { SubscribeonComponent } from './pages/subscribeon/subscribeon.component';
+import { ObserveronComponent } from './pages/observeron/observeron.component';
+import { MaterializeComponent } from './pages/materialize/materialize.component';
+import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.component';
 
 const routes: Routes = [
   {
@@ -142,6 +148,12 @@ const routes: Routes = [
       { path: 'find', component: FindComponent },
       { path: 'every', component: EveryComponent },
       { path: 'delay', component: DelayComponent },
+      { path: 'defaultifempty', component: DefaultemptyComponent },
+      { path: 'toarray', component: ToarrayComponent },
+      { path: 'subscribeon', component: SubscribeonComponent },
+      { path: 'observeon', component: ObserveronComponent },
+      { path: 'materialize', component: MaterializeComponent },
+      { path: 'dematerialize', component: DesmaterializeComponent },
     ],
   },
   {
