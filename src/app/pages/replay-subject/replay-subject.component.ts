@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { forkJoin, ReplaySubject } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { obs } from '../../interface';
 
 @Component({
@@ -12,9 +13,9 @@ export class ReplaySubjectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.replaySubjectWithParameter();
-    this.replaySubjectWithError();
-    // this.replaySubjectOutParameter();
+   // this.replaySubjectWithParameter();
+    // this.replaySubjectWithError();
+    this.replaySubjectOutParameter();
   }
   replaySubjectOutParameter(){
     let rps$=new ReplaySubject(1);
@@ -28,9 +29,21 @@ export class ReplaySubjectComponent implements OnInit {
 
     setTimeout(()=>{
       rps$.subscribe((data)=>{
-        console.log("Obb",data)
+        console.log("Obb a los 2seg",data)
       });
+      //**completando el observable */
+      rps$.complete();
     },2000)
+    forkJoin([rps$.pipe(take(1))]).subscribe(obs)//Si el replaySubject nunca tira un complete, el forkJoin nunca va a finalizar
+    //para eso hay q o poner un take 1, para que traiga y complete el observable interno,
+    //eso no quiere decir que el rps original se complete. por ejemplo si pongo
+    //rps$.subscribe(obs) me va a traer los ultimos valores
+    //pero si yo agarro y hago un rps$.complete() ** tambien va a traer el valor
+    setTimeout(()=>{
+      rps$.subscribe((data)=>{
+        console.log("Obb a los 3seg",data)
+      });
+    },4000)
   }
   replaySubjectWithParameter(){
     //2 como parametro solo permitira ver el 3 y 4 y 5
