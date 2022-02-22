@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { asyncScheduler, merge, of } from 'rxjs';
+import { asyncScheduler, merge, of, queueScheduler } from 'rxjs';
 import { subscribeOn } from 'rxjs/operators';
 import { obs } from '../../interface';
 
@@ -15,7 +15,8 @@ export class SubscribeonComponent implements OnInit {
 
   ngOnInit(): void {
     // this.sinSubscribeOn();
-    this.conSubscribeOn();
+    //this.conSubscribeOn();
+     this.conSubscribeOnQueueSchedule()
   }
 
   sinSubscribeOn() {
@@ -25,7 +26,13 @@ export class SubscribeonComponent implements OnInit {
   }
   conSubscribeOn() {
     console.log('inicio');
-    const otro=this.source$.pipe(subscribeOn(asyncScheduler,2000));//trata al observable de manera asincrona por lo tanto se ejecuta primero los console y despues el subscribe
+    const otro=this.source$.pipe(subscribeOn(asyncScheduler,3000));//trata al observable de manera asincrona por lo tanto se ejecuta primero los console y despues el subscribe
+    merge(this.source2$, otro).subscribe(obs);
+    console.log('fin');
+  }
+  conSubscribeOnQueueSchedule() {
+    console.log('inicio');
+    const otro=this.source$.pipe(subscribeOn(queueScheduler));//trata al observable de manera sincrona por lo tanto se ejecuta primero inicio, respuesta ,fin
     merge(this.source2$, otro).subscribe(obs);
     console.log('fin');
   }

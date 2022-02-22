@@ -21,10 +21,11 @@ export class ObserveronComponent implements OnInit {
      * @todo
      * despues del map hace todo asyncrono. pero antes del map todo es sincrono.
      * probar moviendo el observeOn antes del map
+     * probar qu
      */
     console.log("inicio")
     this.source$.pipe(map((data)=>{
-      console.log("in map")
+      console.log("in map")//se ejecuta 5 veces esto y despues al final trae la data
       return data;
     }),observeOn(asyncScheduler)).subscribe(obs);
     console.log("fin")
