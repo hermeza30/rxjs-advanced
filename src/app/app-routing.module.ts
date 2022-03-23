@@ -79,6 +79,8 @@ import { SubscribeonComponent } from './pages/subscribeon/subscribeon.component'
 import { ObserveronComponent } from './pages/observeron/observeron.component';
 import { MaterializeComponent } from './pages/materialize/materialize.component';
 import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.component';
+import { TapComponent } from './pages/tap/tap.component';
+import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 
 const routes: Routes = [
   {
@@ -154,6 +156,8 @@ const routes: Routes = [
       { path: 'observeon', component: ObserveronComponent },
       { path: 'materialize', component: MaterializeComponent },
       { path: 'dematerialize', component: DesmaterializeComponent },
+      { path: 'tap', component: TapComponent },
+      { path: 'shareReplay', component: ShareReplayComponent },
     ],
   },
   {

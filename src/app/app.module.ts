@@ -87,6 +87,8 @@ import { SubscribeonComponent } from './pages/subscribeon/subscribeon.component'
 import { ObserveronComponent } from './pages/observeron/observeron.component';
 import { MaterializeComponent } from './pages/materialize/materialize.component';
 import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.component';
+import { TapComponent } from './pages/tap/tap.component';
+import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 
 @NgModule({
   declarations: [
@@ -174,6 +176,8 @@ import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.c
     ObserveronComponent,
     MaterializeComponent,
     DesmaterializeComponent,
+    TapComponent,
+    ShareReplayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],

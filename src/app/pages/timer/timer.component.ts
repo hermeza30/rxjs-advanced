@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, of, timer } from 'rxjs';
+import { interval, of, Subscription, timer, Subject } from 'rxjs';
 import { obs } from '../../interface';
-import { concatMap, map, take } from 'rxjs/operators';
+import { concatMap, map, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-timer',
@@ -9,10 +9,13 @@ import { concatMap, map, take } from 'rxjs/operators';
   styleUrls: ['./timer.component.css'],
 })
 export class TimerComponent implements OnInit {
+  public subscri=new Subscription();
+  public destroy$=new Subject();
   constructor() {}
 
   ngOnInit(): void {
-    this.timerVsInterval();
+    // this.timerVsInterval();
+   //this.subscri= timer(8000).pipe(takeUntil(this.destroy$)).subscribe(obs)
   }
 
   timerExample(){
@@ -33,13 +36,17 @@ export class TimerComponent implements OnInit {
   }
   timerVsInterval(){
     let interval$=interval(5000);//Emite cada 5 segundos un valor.
-    let timer$=timer(5000);//Emite a los 5 segundos un valor y termina
+    let timer$=timer(5000);//Emite a los 5 segundos un valor y completa
     let timerLikeInterval$=timer(5000,5000);//Emite a los 5 segundos pero no termina
-
-    // interval$.subscribe(obs)
-    // timer$.subscribe(obs)//
+    // interval$.pipe(take(1)).subscribe(obs)
+    // timer$.subscribe(obs)
     // timerLikeInterval$.subscribe(obs)//
-
-
   }
+  ngOnDestroy(){
+    console.log("antes",this.subscri)
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
+    console.log("despues",this.subscri)
+  }
+
 }

@@ -15,7 +15,8 @@ export class ReplaySubjectComponent implements OnInit {
   ngOnInit(): void {
    // this.replaySubjectWithParameter();
     // this.replaySubjectWithError();
-    this.replaySubjectOutParameter();
+    // this.replaySubjectOutParameter();
+    this.replaySubjectAfterLongTime();
   }
   replaySubjectOutParameter(){
     let rps$=new ReplaySubject(1);
@@ -103,6 +104,26 @@ export class ReplaySubjectComponent implements OnInit {
         console.log("Obb",data)
       },(err)=>{console.log(err)});
     },2000)
+  }
+  replaySubjectAfterLongTime(){
+    let rps$=new ReplaySubject();
+    const rpsObs$=rps$.asObservable();
+    rps$.next(1);
+    rps$.next(2);
+    rps$.next(3);
+    rps$.next(4);
+    const otro$= rpsObs$.pipe(take(1));
+    setTimeout(()=>{
+      otro$.subscribe((data)=>{
+        console.log("A los 3000",data)
+      },(err)=>{console.log(err)});
+    },3000)
+    setTimeout(()=>{
+      otro$.subscribe((data)=>{
+        console.log("A los 100000",data)
+      },(err)=>{console.log(err)});
+    },10000)
+
   }
 
 }
