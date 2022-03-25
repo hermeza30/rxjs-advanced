@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { fromEvent, interval, Observable } from 'rxjs';
-import { buffer, tap } from 'rxjs/operators';
+import { fromEvent, interval, Observable, of, Subject, timer, ReplaySubject } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
+import { buffer, tap, bufferCount, mergeAll, mergeMap, bufferToggle } from 'rxjs/operators';
+import { obs } from 'src/app/interface';
 
 @Component({
   selector: 'app-buffer-operator',
@@ -10,9 +12,11 @@ import { buffer, tap } from 'rxjs/operators';
 export class BufferOperatorComponent implements OnInit, AfterViewInit {
   intervalData: number[] = [];
   showData$!: Observable<Event>;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit() {
     this.showData$ = fromEvent(document.getElementById('showButton')!, 'click');
