@@ -89,6 +89,7 @@ import { MaterializeComponent } from './pages/materialize/materialize.component'
 import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.component';
 import { TapComponent } from './pages/tap/tap.component';
 import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
+import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
 
 @NgModule({
   declarations: [
@@ -178,6 +179,7 @@ import { ShareReplayComponent } from './pages/share-replay/share-replay.componen
     DesmaterializeComponent,
     TapComponent,
     ShareReplayComponent,
+    LastValueFromComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
