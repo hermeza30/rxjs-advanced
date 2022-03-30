@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { interval, lastValueFrom } from 'rxjs';
+import { interval, lastValueFrom, take } from 'rxjs';
 @Component({
   selector: 'app-last-value-from',
   templateUrl: './last-value-from.component.html',
@@ -12,9 +12,12 @@ export class LastValueFromComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.generateLastValue();
   }
 
   async generateLastValue(){
-    // await lastValueFrom()
+    let interval$=interval(1000).pipe(take(10));
+    const finalNUmber= await lastValueFrom(interval$)
+    console.log("Numero final:",finalNUmber);
   }
 }

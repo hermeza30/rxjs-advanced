@@ -10,7 +10,7 @@ import { concatMap, map, take, takeUntil } from 'rxjs/operators';
 })
 export class TimerComponent implements OnInit {
   public subscri=new Subscription();
-  public destroy$=new Subject();
+  public destroy$=new Subject<void>();
   constructor() {}
 
   ngOnInit(): void {
