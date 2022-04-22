@@ -24,13 +24,15 @@ export class CombineLatestComponent implements OnInit {
   }
 
   pruebaConIntervalos() {
-    /**Este Operador es creacional-->combina multiples observables y crea uno nuevo devolviendolos como valores separados- El cual
+    /**Este Operador es creacional-->combina multiples observables y crea uno nuevo devolviendolos como un array- El cual
      * los valores son calculaods teniendo en cuenta el ultimo generado
      * ejemplo si tengo
      * of(1)
      * of('uno')
-     * combineLatest(of(1),of('uno')).pipe(map((value1Obs1:number, value2Obs2:string)=>{
+     * combineLatest(of(1),of('uno')).pipe(map(res)=>{
      * aca me retorna los dos valores del observable
+     * res[0],
+     * res[1]
      * }))
      */
 
