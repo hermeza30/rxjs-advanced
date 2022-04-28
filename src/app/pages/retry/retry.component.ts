@@ -19,7 +19,7 @@ export class RetryComponent implements OnInit {
       observer.next(3);
       observer.error('error');
     })
-    source$.pipe(retry(1),catchError(err=>{
+    source$.pipe(retry(3),catchError(err=>{
      return of('a','b','c')
     })).subscribe(obs)//Permite ejecutar de nuevo el observable.
   }

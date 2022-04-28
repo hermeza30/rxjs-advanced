@@ -1,7 +1,8 @@
 import { publishFacade } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { interval, observable, ConnectableObservable } from 'rxjs';
-import { publish, refCount, share, take } from 'rxjs/operators';
+import { map, publish, refCount, share, take, tap } from 'rxjs/operators';
+import { obs } from '../../interface';
 
 @Component({
   selector: 'app-share',
@@ -18,7 +19,8 @@ export class ShareComponent implements OnInit {
      */
     // this.usandoPublish();//DEPRECATED
     // this.usandoPublishConRefCount()//DEPRECATED
-    this.usandoSHARE()
+    // this.usandoSHARE()
+    this.shareDataMulsticast()
 
   }
   usandoPublish(){
@@ -64,5 +66,14 @@ export class ShareComponent implements OnInit {
         console.log("Obs2",data)
       })
     },3000)
+  }
+
+  shareDataMulsticast(){
+    //const source=interval(1000).pipe(tap(x=>console.log("procesando")),map(x=>x*x),take(6))
+    const source=interval(1000).pipe(tap(x=>console.log("procesando")),map(x=>x*x),take(6),share())
+    source.subscribe(obs)
+    setTimeout(()=>{
+      source.pipe(tap(()=>console.log("pepe"))).subscribe(obs)
+    },4000)
   }
 }

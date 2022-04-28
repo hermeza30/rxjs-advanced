@@ -31,7 +31,7 @@ export class RetryWhenComponent implements OnInit {
       }
 
     }),retryWhen((error)=>{
-      return error.pipe(tap((status)=>{
+      return error.pipe(tap((status:any)=>{
         console.log("Status",status);
         if(!status.startsWith('5')){//Sigue loopeando hasta que se cumple la condiciongit
           throw 'ok';

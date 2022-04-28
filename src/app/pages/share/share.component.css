@@ -1,0 +1,9 @@
+.shared{
+  display: flex;
+  flex-direction: row;
+  padding: 5pt;
+}
+.shared-content{
+  display: flex;
+  flex-direction: column;
+}
