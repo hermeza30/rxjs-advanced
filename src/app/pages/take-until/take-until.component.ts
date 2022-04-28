@@ -49,10 +49,12 @@ export class TakeUntilComponent implements OnInit, AfterViewInit {
     const a = of(1, 2, 3, 4).pipe(delay(5000));
     const b = of(1, 2, 3, 4).pipe(delay(6000));
     const notifier: Subject<void> = new Subject();
-    const subscription= of('a', 'b')
+    const subscription= interval(1000)
       .pipe(
         takeUntil(notifier),
-        switchMap(() => combineLatest([a, b]))//Si el takeUntil esta antes del switchMap, no va hacer que la subscripcion deje de escuchar, esto se debe a que el switchmap todavia esta devolviendo un obs
+        switchMap((notificacion) =>{
+          console.log("Notificacion",notificacion)
+          return combineLatest([a, b])})//Si el takeUntil esta antes del switchMap, no va hacer que la subscripcion deje de escuchar, esto se debe a que el switchmap todavia esta devolviendo un obs
       )
       .subscribe(obs);
 
@@ -61,6 +63,11 @@ export class TakeUntilComponent implements OnInit, AfterViewInit {
       notifier.next();
       notifier.complete();
       console.log("Subs des",subscription)
-    },3000);//si notifico antes de las otras request si se termina si no, no lo va a hcer, probar cambiando de 3000 a 8000
+    },3000);//Probar cambiando de 3000 a 8000 para ver si termina o no la subscripcion
+
+    //TakeUntil refleja los valores del source Observable mientras no se notifique, una vez que se notifica, deja de emitir los valores del source
+    //y completa el Observable reflejado, en este caso el observable generado por Obs$=takeUntil(notifier),es decir devuelve un observable que es reflejo del sourceObservable, pero si hay otro operador debajo del takeUntil,
+    //Este no va a completar y va a dejar la subscripcion abierta. Por eso hay q tener cuidado y matar a todas las subscripciones poniendola al final.
+
   }
 }
