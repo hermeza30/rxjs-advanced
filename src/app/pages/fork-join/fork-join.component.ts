@@ -12,15 +12,13 @@ export class ForkJoinComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    let source1$ = of(1, 2, 3, 4);
-    let source2$ = of('a', 'b','c');
-    forkJoin([source1$,source2$]).subscribe(obs)
     // this.retornoComoObjeto();
     // this.siNuncaSeCompleta();
     //this.siOcurrerUnError();
     //this.unsubscribeForkJoin();
     // this.unsubscribeTakeOneForkJoin();
    // this.unsubscribeErrorForkJoin();
+   this.siUnObservableNoEmite();
   }
   retornoComoObjeto() {
     console.log('/////Como objeto');
@@ -95,5 +93,10 @@ export class ForkJoinComponent implements OnInit {
     let source1$ = of(1, 2, 3, 4);
     let source2$ = of('a', 'b','c').pipe(observeOn(asyncScheduler,5000));
     forkJoin([source1$,source2$]).pipe().subscribe(obs)
+  }
+  siUnObservableNoEmite(){
+    const uno$=of();//si un observable no emite datos el resultado del forkJoin tampoco emitira datos, devuelve un complete sin datos.
+    const dos$=of(1,2,3);
+    forkJoin([uno$,dos$]).subscribe(obs)
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { catchError, concatMap, map, take } from 'rxjs/operators';
 import { obs } from '../../interface';
@@ -84,7 +84,13 @@ export class CatchErrorComponent implements OnInit {
       .pipe(
         concatMap((id) =>
           this.getPokemonName(id).pipe(
-            catchError((error) => of(`¡Oh no, ha ocurrido un error! ${error}`))
+            catchError((error:any) => {
+            if(error){
+
+              return of(`¡Oh no, ha ocurrido un error! ${error}`)
+            }
+            return throwError(()=>new Error(error))
+            })
           )
         )
       )
