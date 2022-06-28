@@ -15,9 +15,12 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     /**........... */
     let arrra=Array.from(Array(10).keys());
     of(...arrra).pipe(filter(x=>x>=3)).subscribe(obs)
+    of(...arrra).pipe(filter(x=>x===50)).subscribe(obs)
     /**........... */
     this.subs=fromEvent(document,'click').pipe(filter((e:any)=>{
       return (e.target as HTMLElement).tagName==='A'

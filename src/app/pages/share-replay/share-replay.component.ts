@@ -15,10 +15,10 @@ export class ShareReplayComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
-    // this.solucion();
-    this.problemaPlanteado()
+    this.solucion();
+    // this.problemaPlanteado()
   }
-  problemaPlanteado(){
+  problemaPlanteado() {
     /**Problema que se plantea es repetir la misma peticion varias veces, enttonces queremos hacerla una vez
      * y realizamos 2 subscibe
      */
@@ -27,19 +27,19 @@ export class ShareReplayComponent implements OnInit {
     }
   }
   getHttp() {
-    return this.http.get(
-      `https://jsonplaceholder.typicode.com/comments`
-    ).pipe(tap(()=>console.log("http request")));
+    return this.http
+      .get(`https://jsonplaceholder.typicode.com/comments`)
+      .pipe(tap(() => console.log('http request')));
   }
-  solucion(){
-   const result$=this.getHttpSharedReplay().pipe(shareReplay())
-   for (let i = 1; i <= 4; i++) {
-    result$.subscribe(obs);
-  }
+  solucion() {
+    const result$ = this.getHttpSharedReplay().pipe(shareReplay());
+    for (let i = 1; i <= 4; i++) {
+      result$.subscribe(obs);
+    }
   }
   getHttpSharedReplay() {
-    return this.http.get(
-      `https://jsonplaceholder.typicode.com/comments/`
-    ).pipe(tap(()=>console.log("http shared")));
+    return this.http
+      .get(`https://jsonplaceholder.typicode.com/comments/`)
+      .pipe(tap(() => console.log('http shared')));
   }
 }

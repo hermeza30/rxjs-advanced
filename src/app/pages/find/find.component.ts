@@ -15,8 +15,9 @@ export class FindComponent implements OnInit {
   ngOnInit(): void {
     //diferencia con el findindex no retorna error si no se cumple predicado
     //devuelve el valor
-    this.findMethod();
-    this.findVsFirstMethod();
+    // this.findMethod();
+    // this.findVsFirstMethod();
+    this.findIfNoValue();
   }
   findMethod():void{
     let source$=of(1,2,3,10,5,6,20);
@@ -26,6 +27,10 @@ export class FindComponent implements OnInit {
     let source$=of(1,2,3,10,13,3,2,20);
     source$.pipe(first((v)=>v>20)).subscribe(obs)
     //diferencia con el find es que el first si no matchea devuelve error
+  }
+  findIfNoValue(){
+    let source$=of(1,2,3,10,13,3,2,20);
+    source$.pipe(find((v)=>v===50)).subscribe(obs)
   }
 
 }
