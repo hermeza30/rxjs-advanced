@@ -7,21 +7,26 @@ import { obs } from '../../interface';
 @Component({
   selector: 'app-mergemap',
   templateUrl: './mergemap.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class MergemapComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // of(1,2,3,4,5).pipe(mergeMap((id:number)=>{
     //   return ajax.getJSON(`https://jsonplaceholder.typicode.com/posts/${id}`)
     // },1)).subscribe(obs);
 
-    of(1,2,3,4,5).pipe(mergeMap((id:number)=>{
-      return ajax.getJSON(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    })).subscribe(obs);
+    of(1, 2, 3, 4, 5)
+      .pipe(
+        mergeMap((id: number) => {
+          return ajax.getJSON(
+            `https://jsonplaceholder.typicode.com/posts/${id}`
+          );
+        })
+      )
+      .subscribe(obs);
   }
 
+  ejercicioFsReadStream() {}
 }

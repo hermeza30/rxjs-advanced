@@ -42,4 +42,46 @@ export class NewObservableComponent implements OnInit {
 
     newObservable.subscribe(new Observer4());
   }
+
+  underneedHood() {
+    const { Observable } = require('rxjs');
+
+    const observable = (events: any) => {
+      const INTERVAL = 1 * 1000;
+      let schedulerId: any;
+      return {
+        subscribe: (observer: any) => {
+          schedulerId = setInterval(() => {
+            if (events.length === 0) {
+              observer.complete();
+              clearInterval(schedulerId);
+              schedulerId = undefined;
+            } else {
+              observer.next(events.shift());
+            }
+          }, INTERVAL);
+          return {
+            unsubscribe: () => {
+              if (schedulerId) {
+                clearInterval(schedulerId);
+              }
+            },
+          };
+        },
+      };
+    };
+
+    let sub = observable([1, 2, 3]).subscribe({
+      next: console.log,
+      complete: () => console.log('Done!'),
+    });
+
+    const source$ = new Observable((observer: any) => {
+      observer.next('55555555');
+      observer.next('44444444');
+      observer.next('333333333');
+      observer.complete();
+    });
+    source$.subscribe(console.log);
+  }
 }

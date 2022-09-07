@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { concat, of, Observable } from 'rxjs';
+import { concat, of, Observable, forkJoin } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { mergeAll } from 'rxjs/operators';
+import { mergeAll, delay } from 'rxjs/operators';
 import { obs } from 'src/app/interface';
 
 @Component({
@@ -13,12 +13,20 @@ export class ConcatComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    let source1$ = of(1, 2, 3, 4);
-    let source2$ = of('a', 'b', 'c', 'd');
-    concat(source1$, source2$).subscribe(obs); //Se concatenan los observable- Uno termina y el otro continua despues
-    this.quePasaSiUnObservableNoSeCompleta();
-    this.completandoElObservable();
+    //this.forkJoinVsConcat()
+    // this.quePasaSiUnObservableNoSeCompleta();
+    // this.completandoElObservable();
+    // this.otraFormaConConcat();
   }
+  forkJoinVsConcat() {
+    //Array vs ForkJoin
+    let source1$ = of(1, 2, 3, 4).pipe(delay(3000));
+    let source2$ = of('a', 'b', 'c', 'd');
+    let source3$ = of({ name: 'pepe' });
+    concat(source1$, source2$, source3$).subscribe(obs); //Se concatenan los observable- Uno termina y el otro continua despues
+    forkJoin([source1$, source2$, source3$]).subscribe(obs);
+  }
+
   quePasaSiUnObservableNoSeCompleta() {
     console.log('/////NoCompleteObservable///////');
     let source3$ = new Observable((observer) => {
