@@ -71,30 +71,30 @@ export class CatchErrorComponent implements OnInit {
     // si se coloca en el sitio equivocado, el flujo del Observable fuente no seguirá ejecutándose tras capturar el error.
 
     //1-A continuación, se puede ver cómo el uso incorrecto de catchError hará que, después de capturar el error que devuelve la primera petición, el flujo se completará y no se harán las otras dos peticiones restantes:
-    // pokemonId$
-    //   .pipe(
-    //     tap((id) => console.log('Pokemon', id)), //Me corta el flujo al segundo elemento
-    //     concatMap((id) => this.getPokemonName(id)),
-    //     catchError((error) => of(`¡Oh no, ha ocurrido un error! ${error}`))
-    //   )
-    //   .subscribe(obs);
+    pokemonId$
+      .pipe(
+        tap((id) => console.log('Pokemon', id)), //Me corta el flujo al segundo elemento
+        concatMap((id) => this.getPokemonName(id)),
+        catchError((error) => of(`¡Oh no, ha ocurrido un error! ${error}`))
+      )
+      .subscribe(obs);
 
     //2-Sin embargo, si se utiliza catchError en el Observable interno, el comportamiento es el que se busca: cuando falle la primera petición,
     // se capturará el error y el flujo seguirá ejecutándose, realizando las dos peticiones restantes:
-    pokemonId$
-      .pipe(
-        concatMap((id) =>
-          this.getPokemonName(id).pipe(
-            catchError((error: any) => {
-              if (error) {
-                return of(`¡Oh no, ha ocurrido un error! ${error}`);
-              }
-              return throwError(() => new Error(error));
-            })
-          )
-        )
-      )
-      .subscribe(obs);
+    // pokemonId$
+    //   .pipe(
+    //     concatMap((id) =>
+    //       this.getPokemonName(id).pipe(
+    //         catchError((error: any) => {
+    //           if (error) {
+    //             return of(`¡Oh no, ha ocurrido un error! ${error}`);
+    //           }
+    //           return throwError(() => new Error(error));
+    //         })
+    //       )
+    //     )
+    //   )
+    //   .subscribe(obs);
   }
 
   getPokemonName(id: number) {

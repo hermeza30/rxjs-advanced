@@ -44,8 +44,6 @@ export class NewObservableComponent implements OnInit {
   }
 
   underneedHood() {
-    const { Observable } = require('rxjs');
-
     const observable = (events: any) => {
       const INTERVAL = 1 * 1000;
       let schedulerId: any;
