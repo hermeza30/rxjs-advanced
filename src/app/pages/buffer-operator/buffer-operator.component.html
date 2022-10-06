@@ -6,3 +6,11 @@
 <div *ngIf="intervalData.length">
   <div *ngFor="let data of intervalData">{{ data }}</div>
 </div>
+<div>
+  <h1>Example with textbox</h1>
+  <p>
+    Hace un buffering de numeros si no esnumero los filtra, la cantidad maxima
+    es de 5
+  </p>
+  <input type="text" #amount />
+</div>
