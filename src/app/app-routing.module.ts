@@ -82,6 +82,7 @@ import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.c
 import { TapComponent } from './pages/tap/tap.component';
 import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
+import { UsginComponent } from './pages/usgin/usgin.component';
 
 const routes: Routes = [
   {
@@ -160,6 +161,7 @@ const routes: Routes = [
       { path: 'tap', component: TapComponent },
       { path: 'shareReplay', component: ShareReplayComponent },
       { path: 'lastValueFrom', component: LastValueFromComponent },
+      { path: 'using', component: UsginComponent },
     ],
   },
   {

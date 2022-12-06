@@ -17,8 +17,10 @@ import {
   throttleTime,
   subscribeOn,
   take,
+  map,
 } from 'rxjs/operators';
 import { obs } from '../../interface';
+import { concatAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-take-until',
@@ -32,7 +34,8 @@ export class TakeUntilComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     // this.memoryLeak();
-    this.takeUntilVsTakeOne()
+    // this.takeUntilVsTakeOne();
+    this.concatMapVsAll();
   }
   ngAfterViewInit() {
     // this.buttonEvent = fromEvent(
@@ -82,20 +85,33 @@ export class TakeUntilComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   takeUntilVsTakeOne() {
-    const subj$=new Subject();
-    const subAsObs=subj$.asObservable();
+    const subj$ = new Subject();
+    const subAsObs = subj$.asObservable();
 
     //Cuando el takeUntil esta antes que otro observable no va a funcionar.no va a destruir la subscripcion.
     //Esto es debido a que el takeUNtil va generando un observable con el reflejo del source,
     //una vez que recibe el evento y corta. el takeUntil devuleve el observable hasta donde reflejo
     //y se lo pasa al siguiente operador, que genera otro observable.
-      const of$= of(1,2,3,4).pipe(takeUntil(this.destroy$),delay(4000)).subscribe(subj$)
+    const of$ = of(1, 2, 3, 4)
+      .pipe(takeUntil(this.destroy$), delay(4000))
+      .subscribe(subj$);
 
+    subAsObs.pipe().subscribe(obs);
+  }
 
-      subAsObs.pipe().subscribe(obs)
-
-    }
-
+  concatMapVsAll() {
+    let mouseDown$ = fromEvent(document, 'mousedown');
+    let mouseUp$ = fromEvent(document, 'mouseup');
+    let mouseMove$ = fromEvent(document, 'mousemove');
+    mouseDown$
+      .pipe(
+        map(() => {
+          return mouseMove$.pipe(takeUntil(mouseUp$));
+        }),
+        concatAll()
+      )
+      .subscribe(console.log);
+  }
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.unsubscribe();

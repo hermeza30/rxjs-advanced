@@ -1,16 +1,32 @@
 <p>mergemap works!</p>
 <p>Mergemap es un operador del tipo High order observable</p>
-<p> Este operador me permite hacer un merge de los observables internos,(haciendo uso de los valores
-    emitidos por el outer observable) y hacer un flaten
-    de cada valor emitido por los observables internos.
+<p>
+  Este operador me permite hacer un merge de los observables internos,(haciendo
+  uso de los valores emitidos por el outer observable) y hacer un flaten de cada
+  valor emitido por los observables internos.
 </p>
-<p>Como podemos ver en la salida, el retorno de la subscripcion no esta en orden a los valores emitidos por el OuterObservable</p>
-<p>Se puede hacer uso de un Outervalue, InnerValue,OuterIndex, InnerInde-DEPRECADO</p>
-<p>Se puede controlar el numero maximo de observables subscriptos simultaneamente
-    Si lo seteo en 1, el mergemap se comporta como un concatmap
+<p>
+  Como podemos ver en la salida, el retorno de la subscripcion no esta en orden
+  a los valores emitidos por el OuterObservable
+</p>
+<p>
+  Se puede hacer uso de un Outervalue, InnerValue,OuterIndex,
+  InnerInde-DEPRECADO
+</p>
+<p>
+  Se puede controlar el numero maximo de observables subscriptos simultaneamente
+  Si lo seteo en 1, el mergemap se comporta como un concatmap
 </p>
 <div>
-  <img src="/assets/images/mergemap.png" style="width: 100%; height: 100%;" alt="">
-
+  <img
+    src="/assets/images/mergemap.png"
+    style="width: 100%; height: 100%"
+    alt=""
+  />
 </div>
 
+<div>
+  <input type="text" id="searchbox" />Search box
+  <ul id="results"></ul>
+  <label id="count"></label>
+</div>

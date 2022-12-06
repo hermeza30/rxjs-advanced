@@ -6,8 +6,9 @@ import {
   Observer,
   interval,
   of,
+  from,
 } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { obs } from '../../interface';
 import { zip } from 'rxjs';
 
@@ -20,7 +21,9 @@ export class CombineLatestComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.pruebaConDosObservables();
+    // this.pruebaConDosObservables();
+    this.combineLatetsConInterval();
+    // this.simpleCombineLatest();
   }
 
   pruebaConIntervalos() {
@@ -50,16 +53,31 @@ export class CombineLatestComponent implements OnInit {
   pruebaConDosObservables() {
     let observ1$ = of('uno');
     let observ2$ = of('2');
-    let numberThre=3;
+    let numberThre = 3;
     observ1$
       .pipe(
         mergeMap((value) => {
           return combineLatest([of(value), observ2$]);
         })
       )
-      .subscribe((value)=>{
-        console.log("Value 0",value[0])
-        console.log("Value 1",value[1])
+      .subscribe((value) => {
+        console.log('Value 0', value[0]);
+        console.log('Value 1', value[1]);
       });
+  }
+  combineLatetsConInterval() {
+    const interval$ = interval(2000);
+    const obs1$ = interval$.pipe(
+      map((v) => String.fromCharCode(65 + v)),
+      map((l) => `Source 1- Letter : ${l}`)
+    );
+
+    const obs2$ = interval$.pipe(map((v) => `Source 2- Number: ${v}`));
+    combineLatest([obs1$, obs2$]).subscribe(console.log);
+  }
+  simpleCombineLatest() {
+    const obs1$ = from(['a', 'b', 'c']);
+    const obs2$ = from([1, 2, 3]);
+    combineLatest([obs1$, obs2$]).subscribe(console.log);
   }
 }

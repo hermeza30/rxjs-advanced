@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -90,6 +90,7 @@ import { DesmaterializeComponent } from './pages/desmaterialize/desmaterialize.c
 import { TapComponent } from './pages/tap/tap.component';
 import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
+import { UsginModule } from './pages/usgin/usgin.module';
 
 @NgModule({
   declarations: [
@@ -181,7 +182,7 @@ import { LastValueFromComponent } from './pages/last-value-from/last-value-from.
     ShareReplayComponent,
     LastValueFromComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, UsginModule],
   providers: [],
   bootstrap: [AppComponent],
 })
