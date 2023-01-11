@@ -19,8 +19,10 @@ import {
   take,
   startWith,
   takeUntil,
+  map,
 } from 'rxjs/operators';
 import { obs } from '../../interface';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-subject',
@@ -34,7 +36,7 @@ export class SubjectComponent implements OnInit {
     // this.observableMethodUnicast();
     // this.subjectMulticast();
     // this.ejemploSubjectAsObserver();
-    this.destruirInnerAndHIggerObserv();
+    // this.destruirInnerAndHIggerObserv();
   }
   observableMethodUnicast() {
     let observable$ = new Observable<any>((observer) => {

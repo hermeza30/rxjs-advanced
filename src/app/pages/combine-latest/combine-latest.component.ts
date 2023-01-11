@@ -7,8 +7,9 @@ import {
   interval,
   of,
   from,
+  forkJoin,
 } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators';
+import { mergeMap, map, take } from 'rxjs/operators';
 import { obs } from '../../interface';
 import { zip } from 'rxjs';
 
@@ -22,8 +23,9 @@ export class CombineLatestComponent implements OnInit {
 
   ngOnInit(): void {
     // this.pruebaConDosObservables();
-    this.combineLatetsConInterval();
+    // this.combineLatetsConInterval();
     // this.simpleCombineLatest();
+    this.combineVsForJoin();
   }
 
   pruebaConIntervalos() {
@@ -79,5 +81,11 @@ export class CombineLatestComponent implements OnInit {
     const obs1$ = from(['a', 'b', 'c']);
     const obs2$ = from([1, 2, 3]);
     combineLatest([obs1$, obs2$]).subscribe(console.log);
+  }
+  combineVsForJoin() {
+    forkJoin([of(42), interval(1000).pipe(take(5))]).subscribe(console.log);
+    combineLatest([of(42), interval(1000).pipe(take(5))]).subscribe(
+      console.log
+    );
   }
 }

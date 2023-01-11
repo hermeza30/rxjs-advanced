@@ -7,11 +7,10 @@ import { obs } from '../../interface';
 @Component({
   selector: 'app-share',
   templateUrl: './share.component.html',
-  styleUrls: ['./share.component.css']
+  styleUrls: ['./share.component.css'],
 })
 export class ShareComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     /**Para convertir un Colud OBs en un Hot Observable
@@ -20,60 +19,68 @@ export class ShareComponent implements OnInit {
     // this.usandoPublish();//DEPRECATED
     // this.usandoPublishConRefCount()//DEPRECATED
     // this.usandoSHARE()
-    this.shareDataMulsticast()
-
+    this.shareDataMulsticast();
   }
-  usandoPublish(){
-    let source$=interval(1000).pipe(publish()) as ConnectableObservable<number>;
+  usandoPublish() {
+    let source$ = interval(1000).pipe(
+      publish()
+    ) as ConnectableObservable<number>;
 
-    source$.subscribe(data=>{
-      console.log("Observabl1",data)
-    })
+    source$.subscribe((data) => {
+      console.log('Observabl1', data);
+    });
 
-    setTimeout(()=>{
-      source$.subscribe(data=>{
-        console.log("Obs2",data)
-      })
-    },3000)
+    setTimeout(() => {
+      source$.subscribe((data) => {
+        console.log('Obs2', data);
+      });
+    }, 3000);
     source$.connect();
   }
-  usandoPublishConRefCount(){
-    let source$=interval(1000).pipe(publish(),refCount());
+  usandoPublishConRefCount() {
+    let source$ = interval(1000).pipe(publish(), refCount());
 
-    source$.subscribe(data=>{
-      console.log("Observabl1",data)
-    })
+    source$.subscribe((data) => {
+      console.log('Observabl1', data);
+    });
 
-    setTimeout(()=>{
-      source$.subscribe(data=>{
-        console.log("Obs2",data)
-      })
-    },3000)
+    setTimeout(() => {
+      source$.subscribe((data) => {
+        console.log('Obs2', data);
+      });
+    }, 3000);
   }
-  usandoSHARE(){
-    let source$=interval(1000).pipe(take(10),share());
+  usandoSHARE() {
+    let source$ = interval(1000).pipe(take(10), share());
 
-    source$.subscribe(data=>{
-      console.log("Observabl1",data)
-    },()=>{
+    source$.subscribe(
+      (data) => {
+        console.log('Observabl1', data);
+      },
+      () => {},
+      () => {
+        console.log('Completed');
+      }
+    );
 
-    },()=>{
-      console.log("Completed")
-    })
-
-    setTimeout(()=>{
-      source$.subscribe(data=>{
-        console.log("Obs2",data)
-      })
-    },3000)
+    setTimeout(() => {
+      source$.subscribe((data) => {
+        console.log('Obs2', data);
+      });
+    }, 3000);
   }
 
-  shareDataMulsticast(){
+  shareDataMulsticast() {
     //const source=interval(1000).pipe(tap(x=>console.log("procesando")),map(x=>x*x),take(6))
-    const source=interval(1000).pipe(tap(x=>console.log("procesando")),map(x=>x*x),take(6),share())
-    source.subscribe(obs)
-    setTimeout(()=>{
-      source.pipe(tap(()=>console.log("pepe"))).subscribe(obs)
-    },4000)
+    const source = interval(1000).pipe(
+      tap((x) => console.log('procesando')),
+      map((x) => x * x),
+      take(6),
+      share()
+    );
+    source.subscribe(obs);
+    setTimeout(() => {
+      source.pipe(tap(() => console.log('pepe'))).subscribe(obs);
+    }, 4000);
   }
 }

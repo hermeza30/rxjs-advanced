@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { catchError, concatMap, map, take, tap } from 'rxjs/operators';
+import { catchError, concatMap, map, take, tap, retry } from 'rxjs/operators';
 import { obs } from '../../interface';
 
 @Component({
@@ -16,7 +16,52 @@ export class CatchErrorComponent implements OnInit {
     // this.error();
     // this.errorConCatch()
     // this.errorDevolviendoInifiteLoop();
-    this.catchErrorUbication();
+    // this.catchErrorUbication();
+    this.atrapandoErrorYRetry();
+  }
+
+  atrapandoErrorYRetry() {
+    of(1, 3, 4, 5, 2)
+      .pipe(
+        map((num) => {
+          if (num % 2 === 0) {
+            throw new Error('Valor no esperado');
+          }
+          return num;
+        }),
+        retry(3)
+      )
+      .subscribe(obs);
+  }
+  atrapandoErrorYvolverAlPrinicipio() {
+    of(2, 3, 4, 5).pipe(
+      map((num) => {
+        if (num % 2 === 0) {
+          throw new Error('Valor no esperado');
+        }
+        return num;
+      }),
+      catchError((err, caught) => {
+        return caught;
+      })
+    );
+  }
+
+  atrapandoErroMap() {
+    type Compute = (x: number) => number;
+    const computeHalf: Compute = (x) => Math.floor(x / 2);
+    of(2, 4, 3, 5, 6, 8)
+      .pipe(
+        map((num) => {
+          if (num % 2 !== 0) {
+            throw new Error(`Unexpected odd number:  ${num}`);
+          }
+          return num;
+        }),
+        catchError(() => of(10)),
+        map(computeHalf)
+      )
+      .subscribe(obs);
   }
   error() {
     let source$ = new Observable((observer) => {

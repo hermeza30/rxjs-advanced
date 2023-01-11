@@ -91,6 +91,7 @@ import { TapComponent } from './pages/tap/tap.component';
 import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
 import { UsginModule } from './pages/usgin/usgin.module';
+import { DatabaseReactComponent } from './database-react/database-react.component';
 
 @NgModule({
   declarations: [
@@ -181,6 +182,7 @@ import { UsginModule } from './pages/usgin/usgin.module';
     TapComponent,
     ShareReplayComponent,
     LastValueFromComponent,
+    DatabaseReactComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, UsginModule],
   providers: [],

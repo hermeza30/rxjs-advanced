@@ -83,6 +83,7 @@ import { TapComponent } from './pages/tap/tap.component';
 import { ShareReplayComponent } from './pages/share-replay/share-replay.component';
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
 import { UsginComponent } from './pages/usgin/usgin.component';
+import { DatabaseReactComponent } from './database-react/database-react.component';
 
 const routes: Routes = [
   {
@@ -211,6 +212,10 @@ const routes: Routes = [
   {
     path: 'schedulers',
     component: SchedulersComponent,
+  },
+  {
+    path: 'reactdatabase',
+    component: DatabaseReactComponent,
   },
 ];
 
