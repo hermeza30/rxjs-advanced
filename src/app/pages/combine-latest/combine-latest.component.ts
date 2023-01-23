@@ -11,7 +11,7 @@ import {
 } from 'rxjs';
 import { mergeMap, map, take } from 'rxjs/operators';
 import { obs } from '../../interface';
-import { zip } from 'rxjs';
+import { zip, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-combine-latest',
@@ -19,13 +19,16 @@ import { zip } from 'rxjs';
   styleUrls: ['./combine-latest.component.css'],
 })
 export class CombineLatestComponent implements OnInit {
+  public subject$2: Subject<number> = new Subject();
+  public obs2$ = this.subject$2.asObservable();
   constructor() {}
 
   ngOnInit(): void {
     // this.pruebaConDosObservables();
     // this.combineLatetsConInterval();
     // this.simpleCombineLatest();
-    this.combineVsForJoin();
+    // this.combineVsForJoin();
+    this.combinacionSubjectConCombineLatest();
   }
 
   pruebaConIntervalos() {
@@ -87,5 +90,13 @@ export class CombineLatestComponent implements OnInit {
     combineLatest([of(42), interval(1000).pipe(take(5))]).subscribe(
       console.log
     );
+  }
+
+  combinacionSubjectConCombineLatest() {
+    let obs1$ = of(1, 2, 3, 4);
+    combineLatest([obs1$, this.obs2$]).pipe(take(1)).subscribe(obs);
+  }
+  emitirData() {
+    this.subject$2.next(4242);
   }
 }

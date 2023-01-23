@@ -84,6 +84,7 @@ import { ShareReplayComponent } from './pages/share-replay/share-replay.componen
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
 import { UsginComponent } from './pages/usgin/usgin.component';
 import { DatabaseReactComponent } from './database-react/database-react.component';
+import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-form.component';
 
 const routes: Routes = [
   {
@@ -163,6 +164,7 @@ const routes: Routes = [
       { path: 'shareReplay', component: ShareReplayComponent },
       { path: 'lastValueFrom', component: LastValueFromComponent },
       { path: 'using', component: UsginComponent },
+      { path: 'withLatestForm', component: WithLatestFormComponent },
     ],
   },
   {

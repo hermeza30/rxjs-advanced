@@ -92,6 +92,7 @@ import { ShareReplayComponent } from './pages/share-replay/share-replay.componen
 import { LastValueFromComponent } from './pages/last-value-from/last-value-from.component';
 import { UsginModule } from './pages/usgin/usgin.module';
 import { DatabaseReactComponent } from './database-react/database-react.component';
+import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-form.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +184,7 @@ import { DatabaseReactComponent } from './database-react/database-react.componen
     ShareReplayComponent,
     LastValueFromComponent,
     DatabaseReactComponent,
+    WithLatestFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, UsginModule],
   providers: [],

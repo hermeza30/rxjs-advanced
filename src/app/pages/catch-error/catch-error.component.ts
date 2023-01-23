@@ -1,8 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import {
+  EMPTY,
+  Observable,
+  of,
+  range,
+  throwError,
+  zip,
+  zipWith,
+  timer,
+} from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { catchError, concatMap, map, take, tap, retry } from 'rxjs/operators';
+import {
+  catchError,
+  concatMap,
+  map,
+  take,
+  tap,
+  retry,
+  mergeMap,
+} from 'rxjs/operators';
 import { obs } from '../../interface';
+import { count } from 'rxjs/operators';
 
 @Component({
   selector: 'app-catch-error',
@@ -17,7 +35,9 @@ export class CatchErrorComponent implements OnInit {
     // this.errorConCatch()
     // this.errorDevolviendoInifiteLoop();
     // this.catchErrorUbication();
-    this.atrapandoErrorYRetry();
+    // this.atrapandoErrorYRetry();
+    //this.catchErrorWithEmpty()
+    this.catchErrorWitchBackOffRetry();
   }
 
   atrapandoErrorYRetry() {
@@ -40,6 +60,9 @@ export class CatchErrorComponent implements OnInit {
           throw new Error('Valor no esperado');
         }
         return num;
+      }),
+      tap((er) => {
+        console.log('en tap men');
       }),
       catchError((err, caught) => {
         return caught;
@@ -146,5 +169,70 @@ export class CatchErrorComponent implements OnInit {
     return ajax
       .getJSON(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .pipe(map((res: any) => res.name));
+  }
+
+  catchErrorWithEmpty() {
+    of(1, 3, 4, 5, 2)
+      .pipe(
+        map((num) => {
+          if (num % 2 === 0) {
+            throw new Error('Valor no esperado');
+          }
+          return num;
+        }),
+        catchError(() => EMPTY), //Empty completa el observable y no permite pasar al error del tap
+        tap({
+          next: (v) => console.log('Next tap', v),
+          error: (e) => console.log('Error', e),
+        })
+        // tap((q) => console.log('Tap error', q))
+      )
+      .subscribe(obs);
+  }
+  catchErrorWitchBackOffRetry() {
+    const mxRetries = 3;
+    const range$ = range(0, 4);
+    range$
+      .pipe(
+        map((i) => {
+          if (i % 2 === 0) {
+            console.log(`pasando por map ${i}`);
+            throw new Error(`Este numero es divisible por 2:${i}`);
+          }
+          return i;
+        }),
+        retry({
+          count: 3,
+          delay: (error, num) => {
+            return timer(num * 1000).pipe(
+              tap(() => console.log(`Retrying after ${num} seconds...`))
+            );
+            // return zip(of(error), (error) => {//Tener en cuenta que zip posee una funcion que recibe el observable de primer parametro
+            //   return { num, error };
+            // }).pipe(
+            //   mergeMap(({ num, error }) => {
+            //     return timer(num * 2000).pipe(
+            //       tap(() => console.log(`Retrying after ${num} seconds...`))
+            //     );
+            //   })
+            // );
+          },
+        })
+      )
+      .subscribe(obs);
+    // of(2, 4, 5, 8, 10).pipe(
+    //   map((num) => {
+    //     if (num % 2 !== 0) {
+    //       throw new Error(`Unexpected odd number:${num}`);
+    //     }
+    //     return num;
+    //   }),
+    //   retry({
+    //     count: mxRetries,
+    //     delay: (e, n) => {
+    //       return range(0, mxRetries).pipe(tap(() => console.log(e, n))); //Analiszar
+    //     },
+    //   })
+    // );
   }
 }
