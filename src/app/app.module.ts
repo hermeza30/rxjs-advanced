@@ -93,6 +93,9 @@ import { LastValueFromComponent } from './pages/last-value-from/last-value-from.
 import { UsginModule } from './pages/usgin/usgin.module';
 import { DatabaseReactComponent } from './database-react/database-react.component';
 import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-form.component';
+import { EjemplosDeInternetComponent } from './pages/ejemplos-de-internet/ejemplos-de-internet.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
 
 @NgModule({
   declarations: [
@@ -185,8 +188,16 @@ import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-fo
     LastValueFromComponent,
     DatabaseReactComponent,
     WithLatestFormComponent,
+    EjemplosDeInternetComponent,
+    ColdVsHotObservablesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, UsginModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    UsginModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

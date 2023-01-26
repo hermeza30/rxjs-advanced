@@ -1,9 +1,26 @@
 <p>zip works!</p>
-<p>Combina multiples observables para crear un observable donde los valores son calculados de manera ordenada 1 a 1 retornando el next con un array </p>
+<p>
+  Combina multiples observables para crear un observable donde los valores son
+  calculados de manera ordenada 1 a 1 retornando el next con un array
+</p>
 <p>array1 [1.2.3.4]</p>
 <p>array2 [a.b.c.d]</p>
 <p>array2 [100.200.300.400]</p>
 
-<br>
-<br>
+<br />
+<br />
 <p>salida: [1,a,100] [2,b,2000]....</p>
+<p>
+  BUENAS PRACTICAS El operador zip() puede ser muy útil en casos en los que
+  necesite distribuir un flujo de forma sincrónica. No se recomienda cuando se
+  coordinan flujos asíncronos que emiten en diferentes momentos -
+  combinarLatest() es el operador de elección en estos casos. La razón de esto
+  es que zip() empareja los eventos uno a uno, por lo que es efectivo cuando los
+  flujos asíncronos sobre los que opera emiten valores con intervalos de tiempo
+  similares, que no puedes controlar todo el tiempo. Por lo tanto, si está
+  emparejando un observable de movimiento del ratón que emite rápidamente, por
+  ejemplo, con una llamada AJAX que emite cada pocos segundos, puede provocar
+  fácilmente que su búfer inter- nal, no limitado, se desborde y su aplicación
+  se bloquee. Traducción realizada con la versión gratuita del traductor
+  www.DeepL.com/Translator
+</p>

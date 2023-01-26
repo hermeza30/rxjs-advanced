@@ -1,0 +1,17 @@
+<select [formControl]="tags">
+  <option value="cats">cats</option>
+  <option value="dogs">dogs</option>
+  <option value="penguins">penguins</option>
+  <option value="parrots">parrots</option>
+</select>
+<pre>
+  <code>
+    {{post$|async|json}}
+  </code>
+</pre>
+<div class="pagination-container">
+  <a [routerLink]="['/', 'withLatestForm']">1</a>
+  <a [routerLink]="['/', 2]">2</a>
+  <a [routerLink]="['/', 3]">3</a>
+  <a [routerLink]="['/', 4]">4</a>
+</div>

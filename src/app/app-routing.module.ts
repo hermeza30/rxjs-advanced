@@ -85,6 +85,8 @@ import { LastValueFromComponent } from './pages/last-value-from/last-value-from.
 import { UsginComponent } from './pages/usgin/usgin.component';
 import { DatabaseReactComponent } from './database-react/database-react.component';
 import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-form.component';
+import { EjemplosDeInternetComponent } from './pages/ejemplos-de-internet/ejemplos-de-internet.component';
+import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
 
 const routes: Routes = [
   {
@@ -165,6 +167,8 @@ const routes: Routes = [
       { path: 'lastValueFrom', component: LastValueFromComponent },
       { path: 'using', component: UsginComponent },
       { path: 'withLatestForm', component: WithLatestFormComponent },
+      { path: 'ejemplosDeInternet', component: EjemplosDeInternetComponent },
+      { path: 'coldvshot', component: ColdVsHotObservablesComponent },
     ],
   },
   {

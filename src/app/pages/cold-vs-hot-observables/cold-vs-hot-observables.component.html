@@ -1,0 +1,46 @@
+<section>
+  <h1>Cold</h1>
+  <p>
+    En términos sencillos, un observable frío es aquel que no comienza a emitir
+    todos sus valores hasta que un observador se suscribe a él. Los observables
+    fríos se utilizan normalmente para envolver tipos de datos acotados como
+    números, rangos de números, cadenas, matrices y peticiones HTTP, así como
+    tipos no acotados como funciones generadoras. Estos recursos se conocen como
+    pasivos en el sentido de que su declaración es independiente de su
+    ejecución. Esto también significa que estos observables son realmente
+    perezosos en su creación y ejecución.
+  </p>
+  <p>
+    OBSERVABLES PUROS Los observables son puros cuando cumplen los principios de
+    PF de una función pura, que es inmutable, sin efectos secundarios y
+    repetible. Ya hemos hablado largo y tendido sobre los dos primeros
+    principios en este libro, y ahora nos centraremos en la tercera cualidad.
+    Para mantener la deseable propiedad funcional de transparencia referencial,
+    las funciones deben ser repetibles y predecibles, lo que significa que
+    invocar una función con los mismos argumentos siempre produce el mismo
+    resultado. Lo mismo ocurre con los observables fríos cuando se ven
+    simplemente como funciones que producen (devuelven) un conjunto de valores.
+  </p>
+  <p>
+    Además, la declaración de un observable frío frecuentemente comienza con
+    operadores estáticos como of() o from(), y los observables de tiempo
+    interval() y timer() también se comportan fríamente. He aquí un ejemplo
+    rápido:
+  </p>
+</section>
+<section>
+  <h1>Hot</h1>
+  <p>
+    A diferencia de la contraparte cold, donde cada suscripción desencadena un
+    nuevo flujo, los suscriptores de los observables hot tienden a recibir sólo
+    los eventos que se emiten después de que se crea la suscripción,
+  </p>
+  <p>
+    A diferencia de los observables fríos, que crean copias independientes de la
+    fuente de datos para emitir a cada suscriptor, un observable caliente
+    comparte la misma suscripción con todos los observadores que lo escuchan.
+    Por lo tanto, se puede concluir que un observable caliente es aquel que,
+    cuando se suscribe, emite la secuencia de eventos en curso desde el punto de
+    suscripción y no desde el principio.
+  </p>
+</section>
