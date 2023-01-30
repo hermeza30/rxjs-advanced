@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { filter, interval, Subject, take, tap } from 'rxjs';
-import { obs } from 'src/app/interface';
 
+import { obs } from 'src/app/interface';
+import { io } from 'socket.io-client';
 @Component({
   selector: 'app-cold-vs-hot-observables',
   templateUrl: './cold-vs-hot-observables.component.html',
   styleUrls: ['./cold-vs-hot-observables.component.css'],
 })
 export class ColdVsHotObservablesComponent implements OnInit {
+  public socketIoClient = io('http://localhost:3000');
   constructor() {}
 
   ngOnInit(): void {

@@ -21,6 +21,7 @@ import {
 } from 'rxjs/operators';
 import { obs } from '../../interface';
 import { count } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-catch-error',
@@ -180,7 +181,9 @@ export class CatchErrorComponent implements OnInit {
           }
           return num;
         }),
-        catchError(() => EMPTY), //Empty completa el observable y no permite pasar al error del tap
+        catchError(({ headers }: HttpErrorResponse) => {
+          return EMPTY;
+        }), //Empty completa el observable y no permite pasar al error del tap
         tap({
           next: (v) => console.log('Next tap', v),
           error: (e) => console.log('Error', e),
