@@ -96,6 +96,8 @@ import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-fo
 import { EjemplosDeInternetComponent } from './pages/ejemplos-de-internet/ejemplos-de-internet.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
+import { ObservableWithPromiseModule } from './pages/observable-with-promise/observable-with-promise.module';
+import { WhatsNewsModule } from './pages/whats-news/whats-news.module';
 
 @NgModule({
   declarations: [
@@ -197,6 +199,8 @@ import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/c
     AppRoutingModule,
     HttpClientModule,
     UsginModule,
+    ObservableWithPromiseModule,
+    WhatsNewsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

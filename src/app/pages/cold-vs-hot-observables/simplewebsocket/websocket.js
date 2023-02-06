@@ -16,10 +16,10 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
-});
-fromEvent(io, "connection").subscribe((connection) => {
+io.on("connection", (socket) => {});
+fromEvent(io, "connection").subscribe((socket) => {
+  // console.log(connection);
+  socket.emit("hello", "world");
   console.log("Escuchando evento rxjs");
 });
 server.listen(3000, () => {

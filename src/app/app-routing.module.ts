@@ -87,6 +87,8 @@ import { DatabaseReactComponent } from './database-react/database-react.componen
 import { WithLatestFormComponent } from './pages/with-latest-form/with-latest-form.component';
 import { EjemplosDeInternetComponent } from './pages/ejemplos-de-internet/ejemplos-de-internet.component';
 import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
+import { ObservableWithPromiseComponent } from './pages/observable-with-promise/observable-with-promise.component';
+import { WhatsNewsComponent } from './pages/whats-news/whats-news.component';
 
 const routes: Routes = [
   {
@@ -169,6 +171,11 @@ const routes: Routes = [
       { path: 'withLatestForm', component: WithLatestFormComponent },
       { path: 'ejemplosDeInternet', component: EjemplosDeInternetComponent },
       { path: 'coldvshot', component: ColdVsHotObservablesComponent },
+      {
+        path: 'observableandpromise',
+        component: ObservableWithPromiseComponent,
+      },
+      { path: 'whatsnews', component: WhatsNewsComponent },
     ],
   },
   {
