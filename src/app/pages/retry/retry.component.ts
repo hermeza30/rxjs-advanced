@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { defer, from, Observable, of } from 'rxjs';
 import { catchError, mergeMap, retry, tap } from 'rxjs/operators';
 import { obs } from '../../interface';
 
@@ -28,8 +28,8 @@ export class RetryComponent implements OnInit {
       .subscribe(obs); //Permite ejecutar de nuevo el observable.
   }
 
-  pruebaRetry() {
-    /**LAS PROMESAS NO SE PUEDEN REINTENTAR
+  pruebaRetryReintentarPromise() {
+    /**LAS PROMESAS SE PUEDEN REINTENTAR?
      * Caso 1: Of(promise) esto al tirar error la promise ya no se puede volver a intentar de nuevo
      * por lo que su estado es failed. Por mas que haga 3 retry solamente fallara y no reintentara.
      * Caso 2: En el segundo caso MergeMap envuelvo la prom dentro de un mergeMap lo cual

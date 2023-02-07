@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  defer,
   filter,
   from,
   fromEvent,
@@ -18,8 +19,8 @@ import { obs } from 'src/app/interface';
 import { io } from 'socket.io-client';
 import * as dayjs from 'dayjs';
 import moment from 'moment';
-import { Observer } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { Observer, observable } from 'rxjs';
+import { retry, count } from 'rxjs/operators';
 @Component({
   selector: 'app-cold-vs-hot-observables',
   templateUrl: './cold-vs-hot-observables.component.html',
@@ -31,6 +32,9 @@ export class ColdVsHotObservablesComponent implements OnInit {
 
   ngOnInit(): void {
     // this.resubscribingStream();
+
+    // this.retryOnSuccess();
+    this.makingHotObsCold();
   }
   resubscribingStream() {
     /**Cold observable
@@ -151,5 +155,69 @@ export class ColdVsHotObservablesComponent implements OnInit {
     }
     miPrimerSubscriptor();
     miSegundosubscriptor();
+  }
+
+  retryOnSuccess() {
+    /**En caso de que queramos hacer un reset del Retry, podemos establecer su props
+     * resetOnSuccess en true, ejemplo si ocurren 1 succes el contador vuelve a 2.
+     * Al ocurrir 3 fallos seguidos no hay reintento y termina con un error la subscripcion
+     */
+    const values = ['_', 0, 1, 0, 2, 0, 3, 0, 0, 0, 4];
+    defer(() => {
+      console.log('Defer');
+      values.shift();
+      return from(values);
+    })
+      .pipe(
+        tap((i) => {
+          if (!i) {
+            console.log('Error', { i });
+            throw Error('Error');
+          } else {
+            console.log('Paso', { i });
+          }
+        }),
+        retry({ count: 2, resetOnSuccess: true }) //Restablece la cantidad de intentos cuando la susbscripcion reintentada emite su primer valor por next
+      )
+      .subscribe(obs);
+  }
+
+  makingHotObsCold() {
+    /**HOT PROMISE,
+     * Una vez ejecutada la promesa, esta compartira a todos los subscriptores el mismo resultado
+     */
+    const futureValue = fetch('https://jsonplaceholder.typicode.com/users')
+      .then((r) => r.json())
+      .then((r) => {
+        return r.map((o: any) => {
+          return { phone: `${o.phone}${o.id}` };
+        });
+      });
+    const promise$ = from(futureValue);
+    /**VER EJEMPLO EN EL COMPONENTE RETRY */
+    promise$.subscribe(console.log); //Antes de invocar a la promesa
+    promise$.subscribe(console.log); //Despues de la primera invocacion, todas las subscripciones subsecuentes van a responder con el mismo resultado de la primera invocacion
+    promise$.subscribe(console.log); //Despues de la primera invocacion. Invocaciones 1
+
+    /**COLD PROMISE */
+    const coldProm$ = new Observable((observer) => {
+      const futureValue = fetch('https://jsonplaceholder.typicode.com/users')
+        .then((r) => r.json())
+        .then((r) => {
+          return r.map((o: any) => {
+            return { phone: `${o.phone}${o.id}` };
+          });
+        });
+
+      futureValue.then((v) => {
+        observer.next(v);
+      });
+    });
+    coldProm$.subscribe((v) => {
+      console.log('Nueva subscripcion', { v });
+    });
+    coldProm$.subscribe((v) => {
+      console.log('Nueva subscripcion', { v });
+    }); //Invocaciones en total 2
   }
 }
