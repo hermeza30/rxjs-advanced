@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  ConnectableObservable,
   defer,
   filter,
   from,
@@ -19,8 +20,8 @@ import { obs } from 'src/app/interface';
 import { io } from 'socket.io-client';
 import * as dayjs from 'dayjs';
 import moment from 'moment';
-import { Observer, observable } from 'rxjs';
-import { retry, count } from 'rxjs/operators';
+import { Observer, observable, combineLatest } from 'rxjs';
+import { retry, count, share, map, publish } from 'rxjs/operators';
 @Component({
   selector: 'app-cold-vs-hot-observables',
   templateUrl: './cold-vs-hot-observables.component.html',
@@ -28,13 +29,15 @@ import { retry, count } from 'rxjs/operators';
 })
 export class ColdVsHotObservablesComponent implements OnInit {
   public socketIoClient = io('http://localhost:3000');
+  public setFunc = new Set();
   constructor() {}
 
   ngOnInit(): void {
     // this.resubscribingStream();
-
     // this.retryOnSuccess();
-    this.makingHotObsCold();
+    // this.makingHotObsCold();
+    // this.makingColdObsToHot();
+    // this.errorConShare();
   }
   resubscribingStream() {
     /**Cold observable
@@ -219,5 +222,70 @@ export class ColdVsHotObservablesComponent implements OnInit {
     coldProm$.subscribe((v) => {
       console.log('Nueva subscripcion', { v });
     }); //Invocaciones en total 2
+  }
+  makingColdObsToHot() {
+    const source$ = interval(1000);
+    source$.pipe(
+      take(10),
+      tap((num) =>
+        console.log(`Running some code with
+      ${num}`)
+      )
+    );
+    const shared$ = source$.pipe(share()); //Convertimos cold obs en hot
+
+    shared$.subscribe(createObserver('SourceA'));
+    setTimeout(() => {
+      shared$.subscribe(createObserver('SourceB'));
+    }, 3000);
+    function createObserver(tag: any) {
+      return {
+        next: (x: any) => console.log(`Next: ${tag} ${x}`),
+        error: (e: any) => console.log(`Error ${e}`),
+        complete: () => console.log(`complete`),
+      };
+    }
+  }
+  /**Error con share
+   *
+   * El operador share() es útil en muchos casos en los que los suscriptores se suscriben en momentos
+   * diferentes pero son algo tolerantes a la pérdida de datos. Dado que puede utilizarse a continuación
+   * de cualquier observable, a veces resulta confuso para los recién llegados, que podrían verse tentados a hacer lo siguiente:
+const fuente$ = Rx.Observable.from([1,2,3,4])
+  .filter(esPar)
+  .map(x => x * x)
+  .compartir();
+source$.subscribe(x => console.log(`Stream 1 ${x}`));
+source$.subscribe(x => console.log(`Stream 2 ${x}`));
+Este código es a menudo visto como una victoria fácil y eficiente para los nuevos
+en la programación reactiva. Si el pipeline se ejecuta para cada suscripción,
+entonces tiene sentido que añadiendo el operador share puedas forzar que se ejecute
+sólo una vez, y ambos observadores puedan usar los resultados. Sin embargo, como la
+consola le dirá, esto no parece ocurrir. En su lugar, sólo el flujo 1 parece ejecutarse.
+ La razón de esto es doble. La primera es la programación, que vamos a pasar por alto por ahora,
+  ya que está cubierto en un capítulo posterior. En términos básicos, suscribirse a una fuente
+  síncrona como un array se ejecutará y completará antes de que se alcance la segunda sentencia
+  subscribe. La segunda razón es que share() ha introducido estado en tu aplicación. Con ella,
+  la primera subscripción siempre resulta en que el observable comience a emitir, y mientras al
+  menos un subscriptor continúe escuchando, continuará emitiendo hasta que la fuente se complete.
+   Si no se tiene cuidado, este tipo de comportamiento puede convertirse en un error sutil.
+Cuando se trata de observables que se ejecutan inmediatamente, como los del ejemplo,
+esto puede dar lugar a que sólo un único suscriptor reciba los eventos.
+
+Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
+   */
+
+  errorConShare() {
+    const source$ = from([1, 2, 3, 4]).pipe(
+      map((x) => {
+        return x * 2;
+      }),
+      share()
+    );
+
+    source$.subscribe(obs); //Solamente se ejecuta y completa el primero.
+    setTimeout(() => {
+      source$.subscribe(obs);
+    }, 4000);
   }
 }

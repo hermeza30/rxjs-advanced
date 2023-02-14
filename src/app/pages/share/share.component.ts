@@ -13,13 +13,13 @@ export class ShareComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    /**Para convertir un Colud OBs en un Hot Observable
+    /**Para convertir un cold OBs en un Hot Observable
      * podemos usar el publish
      */
     // this.usandoPublish();//DEPRECATED
     // this.usandoPublishConRefCount()//DEPRECATED
     // this.usandoSHARE()
-    this.shareDataMulsticast();
+    // this.shareDataMulsticast();
   }
   usandoPublish() {
     let source$ = interval(1000).pipe(

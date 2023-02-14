@@ -11,6 +11,7 @@ import {
   concat,
   merge,
   EMPTY,
+  from,
 } from 'rxjs';
 import { combineLatestInit } from 'rxjs/internal/observable/combineLatest';
 import {
@@ -31,12 +32,25 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class SubjectComponent implements OnInit {
   constructor() {}
-
+  /**Un subject se puede comportar como un Observer y como un observable que emite eventos.
+ * interface Subject extends Observable implements Subscription {
+}
+ */
   ngOnInit(): void {
     // this.observableMethodUnicast();
     // this.subjectMulticast();
     // this.ejemploSubjectAsObserver();
     // this.destruirInnerAndHIggerObserv();
+    this.multipleSubscriptions();
+  }
+
+  multipleSubscriptions() {
+    const subject = new Subject();
+    subject.subscribe((x) => console.log('Source1:' + x));
+    subject.subscribe((x) => console.log('Source2:' + x));
+
+    subject.next(0);
+    from([1, 2, 3, 4]).subscribe(subject);
   }
   observableMethodUnicast() {
     let observable$ = new Observable<any>((observer) => {

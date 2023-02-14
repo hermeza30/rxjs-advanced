@@ -43,4 +43,16 @@
     cuando se suscribe, emite la secuencia de eventos en curso desde el punto de
     suscripción y no desde el principio.
   </p>
+  <p>
+    Los observables calientes pueden producir eventos en ausencia de
+    observadores, mientras que los observables fríos no se activan hasta que
+    tienen una suscripción
+  </p>
+</section>
+<section>
+  <h1>Producers</h1>
+  <p>
+    COLD is when your observable creates the producer. HOT is when your
+    observable closes over the producer.
+  </p>
 </section>

@@ -26,7 +26,8 @@ export class ShareReplayComponent implements OnInit {
     // this.solucion();
     // this.problemaPlanteado()
     // this.shareReplaySolo();
-    this.shareSolo();
+    // this.shareSolo();
+    this.otroShareReplay();
   }
   problemaPlanteado() {
     /**Problema que se plantea es repetir la misma peticion varias veces, enttonces queremos hacerla una vez
@@ -54,6 +55,14 @@ export class ShareReplayComponent implements OnInit {
       .pipe(tap(() => console.log('http shared')));
   }
   shareReplaySolo() {
+    /**Este operador permite compartir la emision de la primera susbscripcion
+     * a los demas observables y ademas decirle la cantidad
+     * de eventos en el buffer almacenar para compartirlo a la siguiente subscripcion
+     * que se conecte a mi observable.
+     * Ej emit 6 valores con shareReplay(3)
+     * Obs1-  >   0-1-2-3-4-5
+     * a los 10 segundos Obs2-> 3 4 5 6 7
+     */
     const sharedReplay$ = interval(1000).pipe(take(6), shareReplay(3));
     sharedReplay$.subscribe((value) => {
       console.log('En la subscripcion A', value);
@@ -82,5 +91,18 @@ export class ShareReplayComponent implements OnInit {
         console.log('en la subscripcion B', value); //a los 3 segundos el observable comparte los valores generados por el observable padre.
       });
     }, 3000);
+  }
+  otroShareReplay() {
+    console.log('Iniciando');
+    const shareReplay$ = interval(1000).pipe(take(5), shareReplay(3)); //almacena 2,3,4
+    shareReplay$.subscribe((v) => {
+      console.log(`Obs1: ${v}`);
+    });
+    setTimeout(() => {
+      console.log('<-----Transition----->');
+      shareReplay$.pipe().subscribe((v) => {
+        console.log(`Obs2: ${v}`); //Recibo 2,3,4
+      });
+    }, 6000); //1 segundo paso desde que se emitiron finalemnte los datos
   }
 }
