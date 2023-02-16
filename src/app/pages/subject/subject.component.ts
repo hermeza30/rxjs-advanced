@@ -21,6 +21,7 @@ import {
   startWith,
   takeUntil,
   map,
+  tap,
 } from 'rxjs/operators';
 import { obs } from '../../interface';
 import { mergeMap } from 'rxjs/operators';
@@ -41,7 +42,8 @@ export class SubjectComponent implements OnInit {
     // this.subjectMulticast();
     // this.ejemploSubjectAsObserver();
     // this.destruirInnerAndHIggerObserv();
-    this.multipleSubscriptions();
+    // this.multipleSubscriptions();
+    this.quieroVeerTakeUntil();
   }
 
   multipleSubscriptions() {
@@ -146,5 +148,22 @@ export class SubjectComponent implements OnInit {
       subDestroy.next(true);
       subDestroy.unsubscribe();
     }, 8000);
+  }
+  quieroVeerTakeUntil() {
+    const destroy$ = new Subject();
+    interval(1000)
+      .pipe(
+        tap(() => console.log('--->Interval padre')),
+        mergeMap(() => {
+          return interval(2000).pipe(
+            tap(() => console.log('--->Interval Hijo'))
+          );
+        }),
+        takeUntil(destroy$) //take until se lleva puesto el source e innerInterval
+      )
+      .subscribe();
+    setTimeout(() => {
+      destroy$.next(destroy$);
+    }, 6000);
   }
 }
