@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { map, reduce, scan } from 'rxjs/operators';
+import { map, reduce, scan, tap } from 'rxjs/operators';
 import { obs } from '../../interface';
 
 @Component({
@@ -20,8 +20,6 @@ export class ReduceComponent implements OnInit {
     source$.pipe(reduce(this.acumulador)).subscribe(obs);
   }
   acumulador(acc: any, val: any) {
-    console.log('En acumulador', acc);
-    console.log('En current', val);
     return acc + val;
   }
   reduceVsScan() {
@@ -29,18 +27,20 @@ export class ReduceComponent implements OnInit {
     source$
       .pipe(
         reduce(this.acumulador), //solo entrega al map el resultado final del reduce a diferencia del scan
+        tap(() => console.log('tap del reduce')),
         map((v) => {
           return v * 2;
         })
       )
       .subscribe(obs);
-    // source$
-    //   .pipe(
-    //     scan(this.acumulador), //no toma el valor del map solo toma los valores del el observable origen y va acumulando
-    //     map((v) => {
-    //       return v * 2;
-    //     })
-    //   )
-    //   .subscribe(obs);
+    source$
+      .pipe(
+        scan(this.acumulador), //entrega al map el calculo de cada acumulador. Al scan solo entran datos de origen del observable, no toma los valores mapeados.
+        tap((v) => console.log('tap del scan', v)),
+        map((v) => {
+          return v * 2;
+        })
+      )
+      .subscribe(obs);
   }
 }

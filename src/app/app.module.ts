@@ -98,6 +98,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
 import { ObservableWithPromiseModule } from './pages/observable-with-promise/observable-with-promise.module';
 import { WhatsNewsModule } from './pages/whats-news/whats-news.module';
+import { MulticastingOperatorsComponent } from './pages/multicasting-operators/multicasting-operators.component';
 
 @NgModule({
   declarations: [
@@ -192,6 +193,7 @@ import { WhatsNewsModule } from './pages/whats-news/whats-news.module';
     WithLatestFormComponent,
     EjemplosDeInternetComponent,
     ColdVsHotObservablesComponent,
+    MulticastingOperatorsComponent,
   ],
   imports: [
     BrowserModule,

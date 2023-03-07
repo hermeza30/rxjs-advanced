@@ -5,13 +5,14 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "test mocha"
+    "test": "npx mocha fromnode.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "xhr2": "^0.2.1"
   },
   "devDependencies": {
     "chai": "4.3.7",

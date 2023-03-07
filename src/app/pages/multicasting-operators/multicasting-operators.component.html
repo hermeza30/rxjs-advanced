@@ -1,0 +1,21 @@
+<p>multicasting-operators works!</p>
+<p>
+  Comencemos con Observables. Los observables, como saben, son por defecto de
+  naturaleza fría . Cuando digo frío implica:
+</p>
+<p>
+  =>Observable ejecuta y emite un valor solo cuando un observador está suscrito
+  al observable. Entonces, cada vez que un observador se suscribe, comienza una
+  ejecución independiente del observable.
+</p>
+<p>
+  =>Digamos que el observable emite 2 valores y este observable tiene 2
+  suscriptores, entonces el observable se ejecutará 4 veces. Esto se debe a que
+  para cada valor emitido, debe ejecutarse para ambos suscriptores. Esto
+  significa que cuando se emite un valor, no se comparte entre todos los
+  suscriptores. Otra palabra para este comportamiento es unicast. Estos puntos
+  no son muy adecuados, especialmente cuando es necesario compartir recursos
+  costosos como las conexiones de una base de datos. También hay una caída en el
+  rendimiento cuando se deben enviar varias solicitudes de http, incluso cuando
+  se debe compartir la misma respuesta entre varios suscriptores.
+</p>

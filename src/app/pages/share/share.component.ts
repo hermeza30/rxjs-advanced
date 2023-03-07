@@ -20,6 +20,8 @@ export class ShareComponent implements OnInit {
     // this.usandoPublishConRefCount()//DEPRECATED
     // this.usandoSHARE()
     // this.shareDataMulsticast();
+    /**El operador Share crea internamente un Subject que se suscribe a la fuente observable
+     *  y los observadores se suscriben al Subject.Cuando se emite un valor, el Subject notifica el valor a todos sus suscriptores. */
   }
   usandoPublish() {
     let source$ = interval(1000).pipe(

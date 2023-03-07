@@ -2,10 +2,21 @@
 <div class="shared">
   <div class="shared-content">
     <p>Sin Shared</p>
-    <img src="assets/images/sinShared.png" alt="">
+    <img src="assets/images/sinShared.png" alt="" />
   </div>
   <div class="shared-content">
     <p>Con Shared</p>
-    <img src="assets/images/conShared.png" alt="">
+    <img src="assets/images/conShared.png" alt="" />
   </div>
 </div>
+<p>
+  Es importante entender cómo funciona SHARE. Este operador crea internamente un
+  Sujeto que se suscribe a la fuente observable en frío y notifica a sus
+  suscriptores en caso de que se emita algún valor. Siempre que haya al menos un
+  suscriptor en Asunto, emitirá valores. Una vez que no haya suscriptores, el
+  Sujeto se desconectará de la Fuente.
+  <strong
+    >Para cualquier nuevo suscriptor, sin importar si la Fuente se ha completado
+    o no, se suscribirá a la Fuente nuevamente usando el nuevo Asunto.</strong
+  >
+</p>

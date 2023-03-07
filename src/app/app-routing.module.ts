@@ -89,6 +89,7 @@ import { EjemplosDeInternetComponent } from './pages/ejemplos-de-internet/ejempl
 import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/cold-vs-hot-observables.component';
 import { ObservableWithPromiseComponent } from './pages/observable-with-promise/observable-with-promise.component';
 import { WhatsNewsComponent } from './pages/whats-news/whats-news.component';
+import { MulticastingOperatorsComponent } from './pages/multicasting-operators/multicasting-operators.component';
 
 const routes: Routes = [
   {
@@ -176,6 +177,10 @@ const routes: Routes = [
         component: ObservableWithPromiseComponent,
       },
       { path: 'whatsnews', component: WhatsNewsComponent },
+      {
+        path: 'multicastingoperators',
+        component: MulticastingOperatorsComponent,
+      },
     ],
   },
   {
