@@ -1,4 +1,6 @@
 const XMLHttpRequest = require("xhr2");
+const { from, reduce, delay, take, filter, map } = require("rxjs");
+
 function notEmpty(param) {
   return !!param && param.trim().length > 0;
 }
@@ -47,4 +49,30 @@ function ajaxRequestPromises(url, success, error) {
   });
   return promises;
 }
-module.exports = { notEmpty, average, ajaxRequest, ajaxRequestPromises };
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+function square(num) {
+  return num * num;
+}
+function add(a, b) {
+  return a + b;
+}
+function runInterval(source$) {
+  /**
+* Separate:
+• Producer
+• Pipeline
+• Subscriber
+*/
+
+  return source$.pipe(take(10), filter(isEven), map(square), reduce(add));
+}
+module.exports = {
+  notEmpty,
+  average,
+  ajaxRequest,
+  ajaxRequestPromises,
+  runInterval,
+};

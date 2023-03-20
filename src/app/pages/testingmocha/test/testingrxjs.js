@@ -1,11 +1,12 @@
 const assert = require("assert");
 const expect = require("chai").expect;
-const { from, reduce, delay } = require("rxjs");
+const { from, reduce, delay, interval } = require("rxjs");
 const {
   notEmpty,
   average,
   ajaxRequest,
   ajaxRequestPromises,
+  runInterval,
 } = require("./functionstoprove.js");
 
 describe("Adding numbers", () => {
@@ -98,5 +99,13 @@ describe("Asynchronous Test", function () {
       done();
     };
     ajaxRequest(url, success, error);
+  });
+  it("Should square and add even numbers", function (done) {
+    this.timeout(20000); //Increases Mocha’s timeout setting to allow the stream to complete
+    runInterval(interval(1000)).subscribe({
+      next: (total) => expect(total).to.equal(120),
+      error: (e) => assert.fail(e.message),
+      complete: done,
+    });
   });
 });

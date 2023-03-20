@@ -99,6 +99,7 @@ import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/c
 import { ObservableWithPromiseModule } from './pages/observable-with-promise/observable-with-promise.module';
 import { WhatsNewsModule } from './pages/whats-news/whats-news.module';
 import { MulticastingOperatorsComponent } from './pages/multicasting-operators/multicasting-operators.component';
+import { CombineObsLikeProComponent } from './pages/combine-obs-like-pro/combine-obs-like-pro.component';
 
 @NgModule({
   declarations: [
@@ -194,6 +195,7 @@ import { MulticastingOperatorsComponent } from './pages/multicasting-operators/m
     EjemplosDeInternetComponent,
     ColdVsHotObservablesComponent,
     MulticastingOperatorsComponent,
+    CombineObsLikeProComponent,
   ],
   imports: [
     BrowserModule,

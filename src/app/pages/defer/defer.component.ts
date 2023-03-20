@@ -16,7 +16,8 @@ export class DeferComponent implements OnInit {
     this.pruebaConBufferYajax();
   }
   deferPrueba() {
-    /**El defer solo crear el observable siempre y cuando haya una subscripcion, esto
+    /**Crea un observable que, al suscribirse, llama a una fábrica de observables para crear un observable para cada nuevo observador.
+     * El defer solo crear el observable siempre y cuando haya una subscripcion, esto
      * quiere decir que solo ejecutara su {()=>{}} "defer" en caso de que se subscriba
      */
     let obsDef$ = defer(() => {

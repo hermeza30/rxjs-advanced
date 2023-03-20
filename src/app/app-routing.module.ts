@@ -90,6 +90,7 @@ import { ColdVsHotObservablesComponent } from './pages/cold-vs-hot-observables/c
 import { ObservableWithPromiseComponent } from './pages/observable-with-promise/observable-with-promise.component';
 import { WhatsNewsComponent } from './pages/whats-news/whats-news.component';
 import { MulticastingOperatorsComponent } from './pages/multicasting-operators/multicasting-operators.component';
+import { CombineObsLikeProComponent } from './pages/combine-obs-like-pro/combine-obs-like-pro.component';
 
 const routes: Routes = [
   {
@@ -180,6 +181,10 @@ const routes: Routes = [
       {
         path: 'multicastingoperators',
         component: MulticastingOperatorsComponent,
+      },
+      {
+        path: 'combineobslikepro',
+        component: CombineObsLikeProComponent,
       },
     ],
   },

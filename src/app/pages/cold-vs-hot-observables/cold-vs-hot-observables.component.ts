@@ -167,6 +167,7 @@ export class ColdVsHotObservablesComponent implements OnInit {
      */
     const values = ['_', 0, 1, 0, 2, 0, 3, 0, 0, 0, 4];
     defer(() => {
+      //podemos englobar la promesa en un defer
       console.log('Defer');
       values.shift();
       return from(values);
@@ -254,7 +255,7 @@ export class ColdVsHotObservablesComponent implements OnInit {
 const fuente$ = Rx.Observable.from([1,2,3,4])
   .filter(esPar)
   .map(x => x * x)
-  .compartir();
+  .share();
 source$.subscribe(x => console.log(`Stream 1 ${x}`));
 source$.subscribe(x => console.log(`Stream 2 ${x}`));
 Este código es a menudo visto como una victoria fácil y eficiente para los nuevos

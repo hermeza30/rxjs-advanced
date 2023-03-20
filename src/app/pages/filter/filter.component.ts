@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of, fromEvent, Subscription, Subject, Observable } from 'rxjs';
-import { filter, map, mergeMap, switchMap, take } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { obs } from 'src/app/interface';
 
 @Component({
@@ -30,7 +30,8 @@ export class FilterComponent implements OnInit {
     //     })
     //   )
     //   .subscribe(obs);
-    this.switchMasfilter();
+    // this.switchMasfilter();
+    this.comparandoTiposFilter();
   }
   ngOnDestroy() {
     this.subs.unsubscribe();
@@ -56,5 +57,13 @@ export class FilterComponent implements OnInit {
     setTimeout(() => {
       subj.next(1);
     }, 5000);
+  }
+  comparandoTiposFilter() {
+    const data$ = of('foo', 85);
+    const stringData$ = data$.pipe(
+      filter((item): item is string => typeof item === 'string'),
+      tap((item) => console.log(`String item length:${item.length}`))
+    );
+    stringData$.subscribe(obs);
   }
 }
