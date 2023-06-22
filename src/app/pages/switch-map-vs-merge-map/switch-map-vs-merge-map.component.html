@@ -1,0 +1,13 @@
+<p>switch-map-vs-merge-map works!</p>
+<div>
+  <button (click)="ordenar()">Realizar orden</button>
+</div>
+<div class="flex flex-row">
+  <hr />
+  <button (click)="pan$.next('Pan')">Agregar Pan</button>
+  <button (click)="queso$.next('Queso')">Agregar Queso</button>
+  <button (click)="jamon$.next('Jamon')">Agregar Jamon</button>
+</div>
+<div *ngIf="delivery$ | async">
+  <p>Sanguche realizado</p>
+</div>

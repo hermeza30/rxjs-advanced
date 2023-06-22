@@ -91,6 +91,7 @@ import { ObservableWithPromiseComponent } from './pages/observable-with-promise/
 import { WhatsNewsComponent } from './pages/whats-news/whats-news.component';
 import { MulticastingOperatorsComponent } from './pages/multicasting-operators/multicasting-operators.component';
 import { CombineObsLikeProComponent } from './pages/combine-obs-like-pro/combine-obs-like-pro.component';
+import { SwitchMapVsMergeMapComponent } from './pages/switch-map-vs-merge-map/switch-map-vs-merge-map.component';
 
 const routes: Routes = [
   {
@@ -239,6 +240,10 @@ const routes: Routes = [
   {
     path: 'reactdatabase',
     component: DatabaseReactComponent,
+  },
+  {
+    path: 'switchmapvsmergemap',
+    component: SwitchMapVsMergeMapComponent,
   },
 ];
 
