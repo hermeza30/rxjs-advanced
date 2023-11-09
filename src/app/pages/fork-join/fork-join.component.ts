@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin, of, Observable, timer, asyncScheduler } from 'rxjs';
+import {
+  forkJoin,
+  of,
+  Observable,
+  timer,
+  asyncScheduler,
+  from,
+  throwError,
+  Subject,
+} from 'rxjs';
 import {
   take,
   debounce,
@@ -7,8 +16,14 @@ import {
   throttle,
   throttleTime,
   observeOn,
+  tap,
+  catchError,
+  mergeMap,
+  map,
+  mergeAll,
 } from 'rxjs/operators';
 import { obs } from '../../interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-fork-join',
@@ -16,11 +31,11 @@ import { obs } from '../../interface';
   styleUrls: ['./fork-join.component.css'],
 })
 export class ForkJoinComponent implements OnInit {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     // this.retornoComoObjeto();
-    this.siNuncaSeCompleta();
+    // this.siNuncaSeCompleta();
     //this.siOcurrerUnError();
     //this.unsubscribeForkJoin();
     // this.unsubscribeTakeOneForkJoin();
@@ -28,6 +43,7 @@ export class ForkJoinComponent implements OnInit {
     //  this.siUnObservableNoEmite();
     // this.ejecucionForkJoinAsyncObservable();
     // this.elForkJoinSeEjecutaEnParalelo();
+    this.handleInnerErrors();
   }
   retornoComoObjeto() {
     console.log('/////Como objeto');
@@ -112,5 +128,38 @@ export class ForkJoinComponent implements OnInit {
     const source1$ = of(1, 2, 3);
     const source2$ = timer(6000);
     forkJoin(source1$, source2$).subscribe(obs); //No ejecuta hasta los 6 segundos
+  }
+  handleInnerErrors(): void {
+    const array = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+
+    const subject = new Subject();
+    const obs = subject.asObservable();
+
+    obs
+      .pipe(
+        tap((value: any) => {
+          if (value.id === '2') {
+            console.log(value);
+            throw Error('Error to process');
+          }
+        }),
+        mergeMap((value: any) => {
+          return from(value.array).pipe(
+            map((item: any) => {
+              return from(
+                fetch(`https://reqres.in/api/users/${item.id}`).then((r) =>
+                  r.json()
+                )
+              );
+            })
+          );
+        }),
+        mergeAll()
+      )
+      .subscribe(console.log);
+    subject.next({ id: '1', array });
+    subject.next({ id: '2', array });
+    subject.next({ id: '3', array });
+    subject.next({ id: '4', array });
   }
 }
